@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface EtkinlikVeKurumService {
+import web.project.entities.concretes.EtkinlikVeKurum;
+
+public interface EtkinlikVeKurumService extends BaseEntityService<EtkinlikVeKurum>{
 }

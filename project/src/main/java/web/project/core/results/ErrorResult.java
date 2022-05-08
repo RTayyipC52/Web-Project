@@ -1,6 +1,5 @@
 package web.project.core.results;
 
-
 public class ErrorResult extends Result {
     public ErrorResult() {
         super(false);

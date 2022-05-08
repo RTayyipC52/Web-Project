@@ -3,12 +3,14 @@ package web.project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import web.project.business.abstracts.EtkinlikVeKurumService;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
 import web.project.dataAccess.abstracts.EtkinlikVeKurumDao;
-import web.project.entities.concretes.Etkinlik;
 import web.project.entities.concretes.EtkinlikVeKurum;
 
 import java.util.List;
@@ -24,34 +26,33 @@ public class EtkinlikVeKurumManager implements EtkinlikVeKurumService {
 
     @Override
     public DataResult<List<EtkinlikVeKurum>> getAll() {
-        return new SuccessDataResult<List<Etkinlik>>
-                (this.etkinlikVeKurumDao.findAll(),"Etkinlikler listelendi");
+        return new SuccessDataResult<List<EtkinlikVeKurum>>
+                (this.etkinlikVeKurumDao.findAll(),"Data listelendi");
     }
 
     @Override
     public Result add(EtkinlikVeKurum etkinlikVeKurum) {
         this.etkinlikVeKurumDao.save(etkinlikVeKurum);
-        return new SuccessResult("Etkinlik eklendi");
+        return new SuccessResult("Kayıt eklendi");
     }
 
     @Override
     public Result update(EtkinlikVeKurum etkinlikVeKurum) {
         this.etkinlikVeKurumDao.save(etkinlikVeKurum);
-        return new SuccessResult("Etkinlik güncellendi");
+        return new SuccessResult("Kayıt güncellendi");
     }
     @Override
-    public Result delete(int ){
-        this.EtkinlikDao.deleteById();
-        return new SuccessResult("Etkinlik silindi");
+    public Result delete(int id){
+        this.etkinlikVeKurumDao.deleteById(id);
+        return new SuccessResult("Kayıt silindi");
     }
-
-    //get fonksıyonu ve delete fonksıyonundakı silinmesi gereken Id degerlerı eksık
-
-
-
-
-
-
-
-
+    
+    @Override
+    public DataResult<EtkinlikVeKurum> getById(int id) {
+        if (this.etkinlikVeKurumDao.findById(id).isEmpty()){
+            return new ErrorDataResult<EtkinlikVeKurum>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<EtkinlikVeKurum>(this.etkinlikVeKurumDao.getById(id), "Id'ye göre data listelendi");
+        }
+    }
 }

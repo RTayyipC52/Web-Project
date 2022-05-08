@@ -1,9 +1,11 @@
 package web.project.business.concretes;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import web.project.business.abstracts.EtkinlikService;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
@@ -24,49 +26,32 @@ public class EtkinlikManager implements EtkinlikService {
     @Override
     public DataResult<List<Etkinlik>> getAll() {
         return new SuccessDataResult<List<Etkinlik>>
-                (this.EtlinlikDao.findAll(),"Etkinlikler listelendi");
+                (this.etkinlikDao.findAll(),"Etkinlikler listelendi");
     }
 
     @Override
     public Result add(Etkinlik etkinlik) {
-        this.EtkinlikDao.save(etkinlik);
+        this.etkinlikDao.save(etkinlik);
         return new SuccessResult("Etkinlik eklendi");
     }
 
     @Override
     public Result update(Etkinlik etkinlik) {
-        this.EtkinlikDao.save(etkinlik);
+        this.etkinlikDao.save(etkinlik);
         return new SuccessResult("Etkinlik güncellendi");
     }
     @Override
-    public Result delete(int ){
-        this.EtkinlikDao.deleteById();
+    public Result delete(int id){
+        this.etkinlikDao.deleteById(id);
         return new SuccessResult("Etkinlik silindi");
     }
-
-    //get fonksıyonu ve delete fonksıyonundakı silinmesi gereken Id degerlerı eksık
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    @Override
+    public DataResult<Etkinlik> getById(int id) {
+        if (this.etkinlikDao.findById(id).isEmpty()){
+            return new ErrorDataResult<Etkinlik>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getById(id), "Id'ye göre data listelendi");
+        }
+    }
 }

@@ -2,18 +2,17 @@ package web.project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import web.project.business.abstracts.KonusmaciService;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
-import web.project.dataAccess.abstracts.KatilimciDao;
 import web.project.dataAccess.abstracts.KonusmaciDao;
-import web.project.entities.concretes.Etkinlik;
-import web.project.entities.concretes.Katilimci;
 import web.project.entities.concretes.Konusmaci;
 
 import java.util.List;
-
 
     @Service
     public class KonusmaciManager implements KonusmaciService {
@@ -26,40 +25,33 @@ import java.util.List;
 
         @Override
         public DataResult<List<Konusmaci>> getAll() {
-            return new SuccessDataResult<List<Etkinlik>>
-                    (this.konusmaciDao.findAll(),"konusmacilar listelendi");
+            return new SuccessDataResult<List<Konusmaci>>
+                    (this.konusmaciDao.findAll(),"Konusmacilar listelendi");
         }
 
         @Override
         public Result add(Konusmaci konusmaci) {
             this.konusmaciDao.save(konusmaci);
-            return new SuccessResult("konusmaci eklendi");
+            return new SuccessResult("Konusmaci eklendi");
         }
 
         @Override
         public Result update(Konusmaci konusmaci) {
             this.konusmaciDao.save(konusmaci);
-            return new SuccessResult("konusmaci güncellendi");
+            return new SuccessResult("Konusmaci güncellendi");
         }
         @Override
-        public Result delete(int ){
-            this.konusmaciDao.deleteById();
-            return new SuccessResult("konusmaci silindi");
+        public Result delete(int id){
+            this.konusmaciDao.deleteById(id);
+            return new SuccessResult("Konusmaci silindi");
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        @Override
+        public DataResult<Konusmaci> getById(int id) {
+            if (this.konusmaciDao.findById(id).isEmpty()){
+                return new ErrorDataResult<Konusmaci>("Bu Id'ye ait bir kayıt yoktur");
+            }else {
+                return new SuccessDataResult<Konusmaci>(this.konusmaciDao.getById(id), "Id'ye göre data listelendi");
+            }
+        }
     }

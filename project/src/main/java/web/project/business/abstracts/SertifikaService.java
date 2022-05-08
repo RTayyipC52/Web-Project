@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface SertifikaService {
+import web.project.entities.concretes.Sertifika;
+
+public interface SertifikaService extends BaseEntityService<Sertifika>{
 }

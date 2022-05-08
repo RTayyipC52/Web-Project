@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface KonusmaciService {
+import web.project.entities.concretes.Konusmaci;
+
+public interface KonusmaciService extends BaseEntityService<Konusmaci>{
 }

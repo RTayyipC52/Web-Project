@@ -2,20 +2,21 @@ package web.project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import web.project.business.abstracts.SertifikaService;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
-import web.project.dataAccess.abstracts.EtkinlikDao;
 import web.project.dataAccess.abstracts.SertifikaDao;
-import web.project.entities.concretes.Etkinlik;
 import web.project.entities.concretes.Sertifika;
 
 import java.util.List;
 
 @Service
 
-public class SertifikaManager implements SerfifikaService {
+public class SertifikaManager implements SertifikaService {
     private SertifikaDao sertifikaDao;
 
     @Autowired
@@ -41,10 +42,17 @@ public class SertifikaManager implements SerfifikaService {
         return new SuccessResult("Sertifika güncellendi");
     }
     @Override
-    public Result delete(int ){
-        this.sertifikaDao.deleteById();
+    public Result delete(int id){
+        this.sertifikaDao.deleteById(id);
         return new SuccessResult("Sertifika silindi");
     }
-
-//get fonksıyonu ve delete fonksıyonundakı silinmesi gereken Id degerlerı eksık
-
+    
+    @Override
+    public DataResult<Sertifika> getById(int id) {
+        if (this.sertifikaDao.findById(id).isEmpty()){
+            return new ErrorDataResult<Sertifika>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<Sertifika>(this.sertifikaDao.getById(id), "Id'ye göre data listelendi");
+        }
+    }
+}

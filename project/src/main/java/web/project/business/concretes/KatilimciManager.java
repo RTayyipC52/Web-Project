@@ -2,20 +2,20 @@ package web.project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import web.project.business.abstracts.KatilimciService;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
-import web.project.dataAccess.abstracts.EtkinlikVeKurumDao;
 import web.project.dataAccess.abstracts.KatilimciDao;
-import web.project.entities.concretes.Etkinlik;
-import web.project.entities.concretes.EtkinlikVeKurum;
 import web.project.entities.concretes.Katilimci;
 
 import java.util.List;
 
 @Service
-public class KatilimciManager implements KatiliciService {
+public class KatilimciManager implements KatilimciService {
     private KatilimciDao katilimciDao;
 
     @Autowired
@@ -25,34 +25,33 @@ public class KatilimciManager implements KatiliciService {
 
     @Override
     public DataResult<List<Katilimci>> getAll() {
-        return new SuccessDataResult<List<Etkinlik>>
-                (this.katilimciDao.findAll(),"katilimcilar listelendi");
+        return new SuccessDataResult<List<Katilimci>>
+                (this.katilimciDao.findAll(),"Katilimcilar listelendi");
     }
 
     @Override
     public Result add(Katilimci katilimci) {
         this.katilimciDao.save(katilimci);
-        return new SuccessResult("katilimci eklendi");
+        return new SuccessResult("Katilimci eklendi");
     }
 
     @Override
     public Result update(Katilimci katilimci) {
         this.katilimciDao.save(katilimci);
-        return new SuccessResult("katilimci güncellendi");
+        return new SuccessResult("Katilimci güncellendi");
     }
     @Override
-    public Result delete(int ){
-        this.katilimciDao.deleteById();
-        return new SuccessResult("katilimci silindi");
+    public Result delete(int id){
+        this.katilimciDao.deleteById(id);
+        return new SuccessResult("Katilimci silindi");
     }
-
-    //get fonksıyonu ve delete fonksıyonundakı silinmesi gereken Id degerlerı eksık
-
-
-
-
-
-
-
-
+    
+    @Override
+    public DataResult<Katilimci> getById(int id) {
+        if (this.katilimciDao.findById(id).isEmpty()){
+            return new ErrorDataResult<Katilimci>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<Katilimci>(this.katilimciDao.getById(id), "Id'ye göre data listelendi");
+        }
+    }
 }

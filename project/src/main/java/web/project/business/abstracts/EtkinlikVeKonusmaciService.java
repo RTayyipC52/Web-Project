@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface EtkinlikVeKonusmaciService {
+import web.project.entities.concretes.EtkinlikVeKonusmaci;
+
+public interface EtkinlikVeKonusmaciService extends BaseEntityService<EtkinlikVeKonusmaci>{
 }

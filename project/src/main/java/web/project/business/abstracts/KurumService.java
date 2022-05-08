@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface KurumService {
+import web.project.entities.concretes.Kurum;
+
+public interface KurumService extends BaseEntityService<Kurum>{
 }

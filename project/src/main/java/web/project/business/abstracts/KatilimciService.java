@@ -1,4 +1,6 @@
 package web.project.business.abstracts;
 
-public interface KatilimciService {
+import web.project.entities.concretes.Katilimci;
+
+public interface KatilimciService extends BaseEntityService<Katilimci>{
 }
