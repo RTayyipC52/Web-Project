@@ -9,10 +9,9 @@ import web.project.entities.concretes.Etkinlik;
 
 import java.util.List;
 
-
 @RestController
 @CrossOrigin
-@RequestMapping("api/Etinlik")
+@RequestMapping("api/Etkinlik")
 
 public class EtkinlikController {
 
@@ -45,12 +44,4 @@ public class EtkinlikController {
     public Result delete(@RequestParam int id){
         return this.etkinlikService.delete(id);
     }
-
-
-
-
-
-
-
-
 }

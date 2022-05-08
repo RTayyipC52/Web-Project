@@ -1,6 +1,8 @@
 package web.project.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import web.project.dataAccess.abstracts.EtkinlikVeKonusmaciDao;
 import web.project.entities.concretes.EtkinlikVeKonusmaci;
 import web.project.business.abstracts.EtkinlikVeKonusmaciService;
@@ -12,6 +14,7 @@ import web.project.core.results.SuccessResult;
 
 import java.util.List;
 
+@Service
 public class EtkinlikVeKonusmaciManager implements EtkinlikVeKonusmaciService {
 
     private EtkinlikVeKonusmaciDao etkinlikVeKonusmaciDao;

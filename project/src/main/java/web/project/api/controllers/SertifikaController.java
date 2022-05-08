@@ -45,12 +45,4 @@ public class SertifikaController {
     public Result delete(@RequestParam int id){
         return this.sertifikaService.delete(id);
     }
-
-
-
-
-
-
-
-
 }

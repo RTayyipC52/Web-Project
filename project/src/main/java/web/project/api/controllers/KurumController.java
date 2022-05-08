@@ -45,8 +45,4 @@ public class KurumController {
     public Result delete(@RequestParam int id){
         return this.kurumService.delete(id);
     }
-
-
-
-
 }
