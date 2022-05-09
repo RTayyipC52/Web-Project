@@ -30,7 +30,7 @@ public class Katilimci {
 	private String soyad;
 	
 	@Column(name = "telefon")
-	private int telefon;
+	private String telefon;
 	
 	@Column(name = "eposta")
 	private String eposta;

@@ -39,7 +39,7 @@ public class Kurum {
 	private String yetkili_soyad;
 	
 	@Column(name = "yetkili_tel")
-	private int yetkili_tel;
+	private String yetkili_tel;
 	
 	@JsonIgnore
     @OneToMany(mappedBy = "kurum")

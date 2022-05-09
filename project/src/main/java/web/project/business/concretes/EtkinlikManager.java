@@ -14,10 +14,9 @@ import web.project.entities.concretes.Etkinlik;
 
 import java.util.List;
 @Service
-
 public class EtkinlikManager implements EtkinlikService {
     private EtkinlikDao etkinlikDao;
-
+    
     @Autowired
     public EtkinlikManager(EtkinlikDao etkinlikDao) {
         this.etkinlikDao = etkinlikDao;

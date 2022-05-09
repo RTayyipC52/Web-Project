@@ -30,4 +30,8 @@ public class Sertifika {
 	@JsonIgnore
     @OneToOne(mappedBy = "sertifika")
     private Etkinlik etkinlik;
+	
+	@JsonIgnore
+    @OneToOne(mappedBy = "sertifika")
+    private SertifikaImage sertifikaImage;
 }
