@@ -43,17 +43,17 @@ public class KurumManager implements KurumService {
     }
     
     @Override
-    public Result delete(int id){
-        this.kurumDao.deleteById(id);
+    public Result delete(int kurumId){
+        this.kurumDao.deleteById(kurumId);
         return new SuccessResult("Kurum silindi");
     }
     
     @Override
-    public DataResult<Kurum> getById(int id) {
-        if (this.kurumDao.findById(id).isEmpty()){
+    public DataResult<Kurum> getById(int kurumId) {
+        if (this.kurumDao.findById(kurumId).isEmpty()){
             return new ErrorDataResult<Kurum>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<Kurum>(this.kurumDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Kurum>(this.kurumDao.getById(kurumId), "Id'ye göre data listelendi");
         }
     }
 }

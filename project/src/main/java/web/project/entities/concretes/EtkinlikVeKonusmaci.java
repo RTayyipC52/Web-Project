@@ -8,14 +8,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "etkinlik_konusmaci")
 public class EtkinlikVeKonusmaci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "etkinlik_konusmaci_id")
+	private int etkinlikKonusmaciId;
 		
 	@ManyToOne()
     @JoinColumn(name = "etkinlik_id")

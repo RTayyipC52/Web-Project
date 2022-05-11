@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "etkinlik_katilimci")
+@Table(name = "etkinlik_kurum")
 public class EtkinlikVeKurum {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "etkinlik_kurum_id")
+	private int etkinlikKurumId;
 		
 	@ManyToOne()
     @JoinColumn(name = "etkinlik_id")

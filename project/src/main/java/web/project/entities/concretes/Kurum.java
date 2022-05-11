@@ -20,26 +20,26 @@ import lombok.NoArgsConstructor;
 public class Kurum {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "kurum_id")
+	private int kurumId;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "kurum_ad")
+	private String kurumAd;
 	
-	@Column(name = "aciklama")
-	private String aciklama;
+	@Column(name = "kurum_aciklama")
+	private String kurumAciklama;
 	
 	@Column(name = "adres")
 	private String adres;
 	
 	@Column(name = "yetkili_ad")
-	private String yetkili_ad;
+	private String yetkiliAd;
 	
 	@Column(name = "yetkili_soyad")
-	private String yetkili_soyad;
+	private String yetkiliSoyad;
 	
 	@Column(name = "yetkili_tel")
-	private int yetkili_tel;
+	private String yetkiliTel;
 	
 	@JsonIgnore
     @OneToMany(mappedBy = "kurum")

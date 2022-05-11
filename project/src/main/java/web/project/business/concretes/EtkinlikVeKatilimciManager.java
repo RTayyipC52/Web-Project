@@ -39,17 +39,35 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
         return new SuccessResult("Kayıt Güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikVeKatilimciDao.deleteById(id);
+    public Result delete(int etkinlikKatilimciId){
+        this.etkinlikVeKatilimciDao.deleteById(etkinlikKatilimciId);
         return new SuccessResult("Kayıt Silindi");
     }
     
     @Override
-    public DataResult<EtkinlikVeKatilimci> getById(int id) {
-        if (this.etkinlikVeKatilimciDao.findById(id).isEmpty()){
+    public DataResult<EtkinlikVeKatilimci> getById(int etkinlikKatilimciId) {
+        if (this.etkinlikVeKatilimciDao.findById(etkinlikKatilimciId).isEmpty()){
             return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(etkinlikKatilimciId), "Id'ye göre data listelendi");
         }
     }
+
+	@Override
+	public DataResult<EtkinlikVeKatilimci> getByKatilimci_KatilimciId(int katilimciId) {
+		if (this.etkinlikVeKatilimciDao.findById(katilimciId).isEmpty()){
+            return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getByKatilimci_KatilimciId(katilimciId), "KatılımcıId'ye göre data listelendi");
+        }
+	}
+
+	@Override
+	public DataResult<EtkinlikVeKatilimci> getByEtkinlik_EtkinlikId(int etkinlikId) {
+		if (this.etkinlikVeKatilimciDao.findById(etkinlikId).isEmpty()){
+            return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+        }
+	}
 }

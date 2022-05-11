@@ -14,10 +14,9 @@ import web.project.entities.concretes.Etkinlik;
 
 import java.util.List;
 @Service
-
 public class EtkinlikManager implements EtkinlikService {
     private EtkinlikDao etkinlikDao;
-
+    
     @Autowired
     public EtkinlikManager(EtkinlikDao etkinlikDao) {
         this.etkinlikDao = etkinlikDao;
@@ -41,17 +40,17 @@ public class EtkinlikManager implements EtkinlikService {
         return new SuccessResult("Etkinlik güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikDao.deleteById(id);
+    public Result delete(int etkinlikId){
+        this.etkinlikDao.deleteById(etkinlikId);
         return new SuccessResult("Etkinlik silindi");
     }
     
     @Override
-    public DataResult<Etkinlik> getById(int id) {
-        if (this.etkinlikDao.findById(id).isEmpty()){
+    public DataResult<Etkinlik> getById(int etkinlikId) {
+        if (this.etkinlikDao.findById(etkinlikId).isEmpty()){
             return new ErrorDataResult<Etkinlik>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getById(etkinlikId), "Id'ye göre data listelendi");
         }
     }
 }

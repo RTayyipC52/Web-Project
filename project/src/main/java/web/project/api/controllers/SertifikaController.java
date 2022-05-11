@@ -29,8 +29,8 @@ public class SertifikaController {
     }
 
     @GetMapping("/getById")
-    public DataResult<Sertifika> getById(@RequestParam int id) {
-        return this.sertifikaService.getById(id);
+    public DataResult<Sertifika> getById(@RequestParam int sertifikaId) {
+        return this.sertifikaService.getById(sertifikaId);
     }
 
     @PostMapping("/add")
@@ -42,15 +42,7 @@ public class SertifikaController {
         return this.sertifikaService.update((sertifika));
     }
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id){
-        return this.sertifikaService.delete(id);
+    public Result delete(@RequestParam int sertifikaId){
+        return this.sertifikaService.delete(sertifikaId);
     }
-
-
-
-
-
-
-
-
 }

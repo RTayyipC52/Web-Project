@@ -18,16 +18,20 @@ import lombok.NoArgsConstructor;
 public class Sertifika {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "sertifika_id")
+	private int sertifikaId;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "sertifika_ad")
+	private String sertifikaAd;
 	
 	@Column(name = "sertifika_metni")
-	private String sertifika_metni;
+	private String sertifikaMetni;
 	
 	@JsonIgnore
     @OneToOne(mappedBy = "sertifika")
     private Etkinlik etkinlik;
+	
+	@JsonIgnore
+    @OneToOne(mappedBy = "sertifika")
+    private SertifikaImage sertifikaImage;
 }

@@ -29,8 +29,8 @@ public class KonusmaciController {
     }
 
     @GetMapping("/getById")
-    public DataResult<Konusmaci> getById(@RequestParam int id) {
-        return this.konusmaciService.getById(id);
+    public DataResult<Konusmaci> getById(@RequestParam int konusmaciId) {
+        return this.konusmaciService.getById(konusmaciId);
     }
 
     @PostMapping("/add")
@@ -44,7 +44,7 @@ public class KonusmaciController {
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id) {
-        return this.konusmaciService.delete(id);
+    public Result delete(@RequestParam int konusmaciId) {
+        return this.konusmaciService.delete(konusmaciId);
     }
 }

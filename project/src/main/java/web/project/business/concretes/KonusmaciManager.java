@@ -41,17 +41,17 @@ import java.util.List;
             return new SuccessResult("Konusmaci güncellendi");
         }
         @Override
-        public Result delete(int id){
-            this.konusmaciDao.deleteById(id);
+        public Result delete(int konusmaciId){
+            this.konusmaciDao.deleteById(konusmaciId);
             return new SuccessResult("Konusmaci silindi");
         }
 
         @Override
-        public DataResult<Konusmaci> getById(int id) {
-            if (this.konusmaciDao.findById(id).isEmpty()){
+        public DataResult<Konusmaci> getById(int konusmaciId) {
+            if (this.konusmaciDao.findById(konusmaciId).isEmpty()){
                 return new ErrorDataResult<Konusmaci>("Bu Id'ye ait bir kayıt yoktur");
             }else {
-                return new SuccessDataResult<Konusmaci>(this.konusmaciDao.getById(id), "Id'ye göre data listelendi");
+                return new SuccessDataResult<Konusmaci>(this.konusmaciDao.getById(konusmaciId), "Id'ye göre data listelendi");
             }
         }
     }

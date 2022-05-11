@@ -8,6 +8,4 @@ public interface BaseEntityService<T> {
     DataResult<List<T>> getAll();
     Result add(T entity);
     Result update(T entity);
-    Result delete(int id);
-    DataResult<T> getById(int id);
 }

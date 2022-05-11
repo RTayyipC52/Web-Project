@@ -28,8 +28,8 @@ public class EtkinlikVeKatilimciController {
     }
 
     @GetMapping("/getById")
-    public DataResult<EtkinlikVeKatilimci> getById(@RequestParam int id) {
-        return this.etkinlikVeKatilimciService.getById(id);
+    public DataResult<EtkinlikVeKatilimci> getById(@RequestParam int etkinlikKatilimciId) {
+        return this.etkinlikVeKatilimciService.getById(etkinlikKatilimciId);
     }
 
     @PostMapping("/add")
@@ -43,7 +43,17 @@ public class EtkinlikVeKatilimciController {
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id) {
-        return this.etkinlikVeKatilimciService.delete(id);
+    public Result delete(@RequestParam int etkinlikKatilimciId) {
+        return this.etkinlikVeKatilimciService.delete(etkinlikKatilimciId);
+    }
+    
+    @GetMapping("/getByKatilimciId")
+    public DataResult<EtkinlikVeKatilimci> getByKatilimci_KatilimciId(@RequestParam int katilimciId) {
+        return this.etkinlikVeKatilimciService.getByKatilimci_KatilimciId(katilimciId);
+    }
+    
+    @GetMapping("/getByEtkinlikId")
+    public DataResult<EtkinlikVeKatilimci> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+        return this.etkinlikVeKatilimciService.getByEtkinlik_EtkinlikId(etkinlikId);
     }
 }

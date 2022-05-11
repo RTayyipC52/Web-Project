@@ -21,23 +21,20 @@ import lombok.NoArgsConstructor;
 public class Etkinlik {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "etkinlik_id")
+	private int etkinlikId;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "etkinlik_ad")
+	private String etkinlikAd;
 	
-	@Column(name = "aciklama")
-	private String aciklama;
+	@Column(name = "etkinlik_aciklama")
+	private String etkinlikAciklama;
 	
 	@Column(name = "tarih")
 	private Date tarih;
 	
 	@Column(name = "yer")
 	private String yer;
-	
-	@Column(name = "afis_resmi")
-	private String afis_resmi;
 	
 	@OneToOne()
     @JoinColumn(name = "sertifika_id")
@@ -54,4 +51,8 @@ public class Etkinlik {
 	@JsonIgnore
     @OneToMany(mappedBy = "etkinlik")
 	private List<EtkinlikVeKurum> etkinlikvekurum;
+	
+	@JsonIgnore
+    @OneToOne(mappedBy = "etkinlik")
+    private EtkinlikImage etkinlikImage;
 }

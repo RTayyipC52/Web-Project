@@ -20,17 +20,17 @@ import lombok.NoArgsConstructor;
 public class Katilimci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "katilimci_id")
+	private int katilimciId;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "katilimci_ad")
+	private String katilimci_ad;
 	
-	@Column(name = "soyad")
-	private String soyad;
+	@Column(name = "katilimci_soyad")
+	private String katilimci_soyad;
 	
 	@Column(name = "telefon")
-	private int telefon;
+	private String telefon;
 	
 	@Column(name = "eposta")
 	private String eposta;
