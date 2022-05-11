@@ -39,17 +39,35 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
         return new SuccessResult("Kayıt Güncellendi");
     }
     @Override
-    public Result delete(int etkinlik_katilimci_id){
-        this.etkinlikVeKatilimciDao.deleteById(etkinlik_katilimci_id);
+    public Result delete(int etkinlikKatilimciId){
+        this.etkinlikVeKatilimciDao.deleteById(etkinlikKatilimciId);
         return new SuccessResult("Kayıt Silindi");
     }
     
     @Override
-    public DataResult<EtkinlikVeKatilimci> getById(int etkinlik_katilimci_id) {
-        if (this.etkinlikVeKatilimciDao.findById(etkinlik_katilimci_id).isEmpty()){
+    public DataResult<EtkinlikVeKatilimci> getById(int etkinlikKatilimciId) {
+        if (this.etkinlikVeKatilimciDao.findById(etkinlikKatilimciId).isEmpty()){
             return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(etkinlik_katilimci_id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(etkinlikKatilimciId), "Id'ye göre data listelendi");
         }
     }
+
+	@Override
+	public DataResult<EtkinlikVeKatilimci> getByKatilimci_KatilimciId(int katilimciId) {
+		if (this.etkinlikVeKatilimciDao.findById(katilimciId).isEmpty()){
+            return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getByKatilimci_KatilimciId(katilimciId), "KatılımcıId'ye göre data listelendi");
+        }
+	}
+
+	@Override
+	public DataResult<EtkinlikVeKatilimci> getByEtkinlik_EtkinlikId(int etkinlikId) {
+		if (this.etkinlikVeKatilimciDao.findById(etkinlikId).isEmpty()){
+            return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+        }
+	}
 }

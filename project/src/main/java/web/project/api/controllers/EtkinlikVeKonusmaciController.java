@@ -16,35 +16,46 @@ import java.util.List;
 
 public class EtkinlikVeKonusmaciController {
 
-    private EtkinlikVeKonusmaciService etkinlikVeKonusmaciService;
+	private EtkinlikVeKonusmaciService etkinlikVeKonusmaciService;
 
-    @Autowired
-    public  EtkinlikVeKonusmaciController(EtkinlikVeKonusmaciService etkinlikVeKonusmaciService){
-        this.etkinlikVeKonusmaciService = etkinlikVeKonusmaciService;
-    }
+	@Autowired
+	public EtkinlikVeKonusmaciController(EtkinlikVeKonusmaciService etkinlikVeKonusmaciService) {
+		this.etkinlikVeKonusmaciService = etkinlikVeKonusmaciService;
+	}
 
-    @GetMapping("/getAllEtkinlikVeKonusmacilar")
-    public DataResult<List<EtkinlikVeKonusmaci>> getAll() {
-        return this.etkinlikVeKonusmaciService.getAll();
-    }
+	@GetMapping("/getAllEtkinlikVeKonusmacilar")
+	public DataResult<List<EtkinlikVeKonusmaci>> getAll() {
+		return this.etkinlikVeKonusmaciService.getAll();
+	}
 
-    @GetMapping("/getById")
-    public DataResult<EtkinlikVeKonusmaci> getById(@RequestParam int etkinlik_konusmaci_id) {
-        return this.etkinlikVeKonusmaciService.getById(etkinlik_konusmaci_id);
-    }
+	@GetMapping("/getById")
+	public DataResult<EtkinlikVeKonusmaci> getById(@RequestParam int etkinlikKonusmaciId) {
+		return this.etkinlikVeKonusmaciService.getById(etkinlikKonusmaciId);
+	}
 
-    @PostMapping("/add")
-    public Result add(@RequestBody EtkinlikVeKonusmaci etkinlikVeKonusmaci) {
-        return this.etkinlikVeKonusmaciService.add(etkinlikVeKonusmaci);
-    }
+	@PostMapping("/add")
+	public Result add(@RequestBody EtkinlikVeKonusmaci etkinlikVeKonusmaci) {
+		return this.etkinlikVeKonusmaciService.add(etkinlikVeKonusmaci);
+	}
 
-    @PostMapping("/update")
-    public Result update(@RequestBody EtkinlikVeKonusmaci etkinlikVeKonusmaci) {
-        return this.etkinlikVeKonusmaciService.update((etkinlikVeKonusmaci));
-    }
+	@PostMapping("/update")
+	public Result update(@RequestBody EtkinlikVeKonusmaci etkinlikVeKonusmaci) {
+		return this.etkinlikVeKonusmaciService.update((etkinlikVeKonusmaci));
+	}
 
-    @DeleteMapping("/delete")
-    public Result delete(@RequestParam int etkinlik_konusmaci_id) {
-        return this.etkinlikVeKonusmaciService.delete(etkinlik_konusmaci_id);
-    }
+	@DeleteMapping("/delete")
+	public Result delete(@RequestParam int etkinlikKonusmaciId) {
+		return this.etkinlikVeKonusmaciService.delete(etkinlikKonusmaciId);
+	}
+
+	@GetMapping("/getByKonusmaciId")
+	public DataResult<EtkinlikVeKonusmaci> getByKonusmaci_KonusmaciId(@RequestParam int konusmaciId) {
+		return this.etkinlikVeKonusmaciService.getByKonusmaci_KonusmaciId(konusmaciId);
+	}
+
+	@GetMapping("/getByEtkinlikId")
+	public DataResult<EtkinlikVeKonusmaci> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+		return this.etkinlikVeKonusmaciService.getByEtkinlik_EtkinlikId(etkinlikId);
+	}
+
 }

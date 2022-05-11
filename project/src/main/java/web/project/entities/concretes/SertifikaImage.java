@@ -22,7 +22,7 @@ public class SertifikaImage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sertifika_image_id")
-	private int sertifika_image_id;
+	private int sertifikaImageId;
 	
 	@Column(name = "image")
 	private String image;

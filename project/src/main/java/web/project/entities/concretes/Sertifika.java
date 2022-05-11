@@ -19,13 +19,13 @@ public class Sertifika {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sertifika_id")
-	private int sertifika_id;
+	private int sertifikaId;
 	
 	@Column(name = "sertifika_ad")
-	private String sertifika_ad;
+	private String sertifikaAd;
 	
 	@Column(name = "sertifika_metni")
-	private String sertifika_metni;
+	private String sertifikaMetni;
 	
 	@JsonIgnore
     @OneToOne(mappedBy = "sertifika")

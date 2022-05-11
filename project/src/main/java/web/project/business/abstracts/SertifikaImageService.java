@@ -10,8 +10,8 @@ import web.project.entities.concretes.SertifikaImage;
 
 public interface SertifikaImageService{
 	DataResult<List<SertifikaImage>> getAll();
-	DataResult<SertifikaImage> getById(int sertifika_image_id);
-	Result upload(int sertifika_id, MultipartFile file);
+	DataResult<SertifikaImage> getById(int sertifikaImageId);
+	Result upload(int sertifikaId, MultipartFile file);
     Result add(SertifikaImage sertifikaImage);
-    Result delete(int sertifika_image_id);
+    Result delete(int sertifikaImageId);
 }

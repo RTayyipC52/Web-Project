@@ -37,20 +37,20 @@ public class SertifikaImageManager implements SertifikaImageService{
     }
 	
 	@Override
-    public DataResult<SertifikaImage> getById(int sertifika_image_id) {
-        if (this.sertifikaImageDao.findById(sertifika_image_id).isEmpty()) {
+    public DataResult<SertifikaImage> getById(int sertifikaImageId) {
+        if (this.sertifikaImageDao.findById(sertifikaImageId).isEmpty()) {
             return new ErrorDataResult<SertifikaImage>("Girdiğiniz sayıda resim yoktur");
         }else {
             return new SuccessDataResult<SertifikaImage>
-                    (this.sertifikaImageDao.getById(sertifika_image_id), "Id'sine göre resim listelendi");
+                    (this.sertifikaImageDao.getById(sertifikaImageId), "Id'sine göre resim listelendi");
         }
     }
 	
 	 @Override
-	    public Result upload(int sertifika_id, MultipartFile file) {
+	    public Result upload(int sertifikaId, MultipartFile file) {
 	        Map<?, ?> uploadImage = (Map<?, ?>) cloudinaryService.upload(file).getData(); //Resimi yükleme işlemi yapar
 	        SertifikaImage image = new SertifikaImage();
-	        image.setSertifika(sertifikaService.getById(sertifika_id).getData()); //Id'yi veritabanında image'ın sertifikaId'sine setler
+	        image.setSertifika(sertifikaService.getById(sertifikaId).getData()); //Id'yi veritabanında image'ın sertifikaId'sine setler
 	        image.setImage(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
 
 	        return add(image); //Ekleme
@@ -63,16 +63,16 @@ public class SertifikaImageManager implements SertifikaImageService{
 	    }
 
 	    @Override
-	    public Result delete(int sertifika_image_id) {
+	    public Result delete(int sertifikaImageId) {
 
-	    	SertifikaImage image = getById(sertifika_image_id).getData(); //Girilen Id'ye ait veriyi getirir
+	    	SertifikaImage image = getById(sertifikaImageId).getData(); //Girilen Id'ye ait veriyi getirir
 
 	        String[] splitImageUrlArray = image.getImage().split("/"); // Url'i ayırır
 	        int indexOfExtension = splitImageUrlArray[splitImageUrlArray.length - 1].indexOf("."); //.'dan öncesini ayırır
 	        String publicIdOfImage = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
 
 	        cloudinaryService.delete(publicIdOfImage); //publicId'yi cloudinary hesabından siler
-	        sertifikaImageDao.deleteById(sertifika_image_id); //Id'yi veritabanından siler
+	        sertifikaImageDao.deleteById(sertifikaImageId); //Id'yi veritabanından siler
 	        return new SuccessResult("Resim silindi.");
 	    }
 }

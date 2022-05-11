@@ -35,17 +35,17 @@ public class SertifikaImageController {
     }
 
     @GetMapping("/getById")
-    public DataResult<SertifikaImage> getById(@RequestParam int sertifika_image_id) {
-        return this.sertifikaImageService.getById(sertifika_image_id);
+    public DataResult<SertifikaImage> getById(@RequestParam int sertifikaImageId) {
+        return this.sertifikaImageService.getById(sertifikaImageId);
     }
     
     @PostMapping("/upload")
-    public Result upload(@RequestParam int sertifika_id, @RequestPart("file") MultipartFile file) {
-        return this.sertifikaImageService.upload(sertifika_id, file);
+    public Result upload(@RequestParam int sertifikaId, @RequestPart("file") MultipartFile file) {
+        return this.sertifikaImageService.upload(sertifikaId, file);
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int sertifika_image_id) {
-        return sertifikaImageService.delete(sertifika_image_id);
+    public Result delete(@RequestParam int sertifikaImageId) {
+        return sertifikaImageService.delete(sertifikaImageId);
     }
 }

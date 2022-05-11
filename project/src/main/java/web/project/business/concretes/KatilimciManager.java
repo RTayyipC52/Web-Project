@@ -41,17 +41,17 @@ public class KatilimciManager implements KatilimciService {
         return new SuccessResult("Katilimci güncellendi");
     }
     @Override
-    public Result delete(int katilimci_id){
-        this.katilimciDao.deleteById(katilimci_id);
+    public Result delete(int katilimciId){
+        this.katilimciDao.deleteById(katilimciId);
         return new SuccessResult("Katilimci silindi");
     }
     
     @Override
-    public DataResult<Katilimci> getById(int katilimci_id) {
-        if (this.katilimciDao.findById(katilimci_id).isEmpty()){
+    public DataResult<Katilimci> getById(int katilimciId) {
+        if (this.katilimciDao.findById(katilimciId).isEmpty()){
             return new ErrorDataResult<Katilimci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<Katilimci>(this.katilimciDao.getById(katilimci_id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Katilimci>(this.katilimciDao.getById(katilimciId), "Id'ye göre data listelendi");
         }
     }
 }

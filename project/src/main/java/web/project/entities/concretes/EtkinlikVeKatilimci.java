@@ -15,7 +15,7 @@ public class EtkinlikVeKatilimci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "etkinlik_katilimci_id")
-	private int etkinlik_katilimci_id;
+	private int etkinlikKatilimciId;
 		
 	@ManyToOne()
     @JoinColumn(name = "etkinlik_id")

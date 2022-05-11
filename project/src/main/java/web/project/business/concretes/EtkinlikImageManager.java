@@ -37,20 +37,20 @@ public class EtkinlikImageManager implements EtkinlikImageService{
     }
 	
 	@Override
-    public DataResult<EtkinlikImage> getById(int etkinlik_image_id) {
-        if (this.etkinlikImageDao.findById(etkinlik_image_id).isEmpty()) {
+    public DataResult<EtkinlikImage> getById(int etkinlikImageId) {
+        if (this.etkinlikImageDao.findById(etkinlikImageId).isEmpty()) {
             return new ErrorDataResult<EtkinlikImage>("Girdiğiniz sayıda resim yoktur");
         }else {
             return new SuccessDataResult<EtkinlikImage>
-                    (this.etkinlikImageDao.getById(etkinlik_image_id), "Id'sine göre resim listelendi");
+                    (this.etkinlikImageDao.getById(etkinlikImageId), "Id'sine göre resim listelendi");
         }
     }
 	
 	 @Override
-	    public Result upload(int etkinlik_id, MultipartFile file) {
+	    public Result upload(int etkinlikId, MultipartFile file) {
 	        Map<?, ?> uploadImage = (Map<?, ?>) cloudinaryService.upload(file).getData(); //Resimi yükleme işlemi yapar
 	        EtkinlikImage image = new EtkinlikImage();
-	        image.setEtkinlik(etkinlikService.getById(etkinlik_id).getData()); //Id'yi veritabanında image'ın etkinlikId'sine setler
+	        image.setEtkinlik(etkinlikService.getById(etkinlikId).getData()); //Id'yi veritabanında image'ın etkinlikId'sine setler
 	        image.setAfis_resmi(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
 
 	        return add(image); //Ekleme
@@ -63,16 +63,16 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	    }
 
 	    @Override
-	    public Result delete(int etkinlik_image_id) {
+	    public Result delete(int etkinlikImageId) {
 
-	    	EtkinlikImage image = getById(etkinlik_image_id).getData(); //Girilen Id'ye ait veriyi getirir
+	    	EtkinlikImage image = getById(etkinlikImageId).getData(); //Girilen Id'ye ait veriyi getirir
 
 	        String[] splitImageUrlArray = image.getAfis_resmi().split("/"); // Url'i ayırır
 	        int indexOfExtension = splitImageUrlArray[splitImageUrlArray.length - 1].indexOf("."); //.'dan öncesini ayırır
 	        String publicIdOfImage = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
 
 	        cloudinaryService.delete(publicIdOfImage); //publicId'yi cloudinary hesabından siler
-	        etkinlikImageDao.deleteById(etkinlik_image_id); //Id'yi veritabanından siler
+	        etkinlikImageDao.deleteById(etkinlikImageId); //Id'yi veritabanından siler
 	        return new SuccessResult("Resim silindi.");
 	    }
 }

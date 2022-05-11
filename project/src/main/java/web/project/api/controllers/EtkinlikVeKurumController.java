@@ -16,35 +16,46 @@ import java.util.List;
 
 public class EtkinlikVeKurumController {
 
-    private EtkinlikVeKurumService etkinlikVeKurumService;
+	private EtkinlikVeKurumService etkinlikVeKurumService;
 
-    @Autowired
-    public  EtkinlikVeKurumController(EtkinlikVeKurumService etkinlikVeKurumService){
-        this.etkinlikVeKurumService = etkinlikVeKurumService;
-    }
+	@Autowired
+	public EtkinlikVeKurumController(EtkinlikVeKurumService etkinlikVeKurumService) {
+		this.etkinlikVeKurumService = etkinlikVeKurumService;
+	}
 
-    @GetMapping("/getAllEtkinlikVeKurumlar")
-    public DataResult<List<EtkinlikVeKurum>> getAll() {
-        return this.etkinlikVeKurumService.getAll();
-    }
+	@GetMapping("/getAllEtkinlikVeKurumlar")
+	public DataResult<List<EtkinlikVeKurum>> getAll() {
+		return this.etkinlikVeKurumService.getAll();
+	}
 
-    @GetMapping("/getById")
-    public DataResult<EtkinlikVeKurum> getById(@RequestParam int etkinlik_kurum_id) {
-        return this.etkinlikVeKurumService.getById(etkinlik_kurum_id);
-    }
+	@GetMapping("/getById")
+	public DataResult<EtkinlikVeKurum> getById(@RequestParam int etkinlikKurumId) {
+		return this.etkinlikVeKurumService.getById(etkinlikKurumId);
+	}
 
-    @PostMapping("/add")
-    public Result add(@RequestBody EtkinlikVeKurum etkinlikVeKurum) {
-        return this.etkinlikVeKurumService.add(etkinlikVeKurum);
-    }
+	@PostMapping("/add")
+	public Result add(@RequestBody EtkinlikVeKurum etkinlikVeKurum) {
+		return this.etkinlikVeKurumService.add(etkinlikVeKurum);
+	}
 
-    @PostMapping("/update")
-    public Result update(@RequestBody EtkinlikVeKurum etkinlikVeKurum) {
-        return this.etkinlikVeKurumService.update((etkinlikVeKurum));
-    }
+	@PostMapping("/update")
+	public Result update(@RequestBody EtkinlikVeKurum etkinlikVeKurum) {
+		return this.etkinlikVeKurumService.update((etkinlikVeKurum));
+	}
 
-    @DeleteMapping("/delete")
-    public Result delete(@RequestParam int etkinlik_kurum_id) {
-        return this.etkinlikVeKurumService.delete(etkinlik_kurum_id);
-    }
+	@DeleteMapping("/delete")
+	public Result delete(@RequestParam int etkinlikKurumId) {
+		return this.etkinlikVeKurumService.delete(etkinlikKurumId);
+	}
+
+	@GetMapping("/getByKurumId")
+	public DataResult<EtkinlikVeKurum> getByKurum_KurumId(@RequestParam int kurumId) {
+		return this.etkinlikVeKurumService.getByKurum_KurumId(kurumId);
+	}
+
+	@GetMapping("/getByEtkinlikId")
+	public DataResult<EtkinlikVeKurum> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+		return this.etkinlikVeKurumService.getByEtkinlik_EtkinlikId(etkinlikId);
+	}
+
 }

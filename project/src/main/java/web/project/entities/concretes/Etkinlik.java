@@ -22,13 +22,13 @@ public class Etkinlik {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "etkinlik_id")
-	private int etkinlik_id;
+	private int etkinlikId;
 	
 	@Column(name = "etkinlik_ad")
-	private String etkinlik_ad;
+	private String etkinlikAd;
 	
 	@Column(name = "etkinlik_aciklama")
-	private String etkinlik_aciklama;
+	private String etkinlikAciklama;
 	
 	@Column(name = "tarih")
 	private Date tarih;

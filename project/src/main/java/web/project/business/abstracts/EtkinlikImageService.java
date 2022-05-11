@@ -10,8 +10,8 @@ import web.project.entities.concretes.EtkinlikImage;
 
 public interface EtkinlikImageService{
 	DataResult<List<EtkinlikImage>> getAll();
-	DataResult<EtkinlikImage> getById(int etkinlik_image_id);
+	DataResult<EtkinlikImage> getById(int etkinlikImageId);
 	Result upload(int etkinlik_id, MultipartFile file);
     Result add(EtkinlikImage etkinlikImage);
-    Result delete(int etkinlik_image_id);
+    Result delete(int etkinlikImageId);
 }

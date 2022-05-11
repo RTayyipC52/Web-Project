@@ -5,6 +5,8 @@ import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 
 public interface EtkinlikVeKatilimciService extends BaseEntityService<EtkinlikVeKatilimci> {
-	DataResult<EtkinlikVeKatilimci> getById(int etkinlik_katilimci_id);
-	Result delete(int etkinlik_katilimci_id);
+	DataResult<EtkinlikVeKatilimci> getById(int etkinlikKatilimciId);
+	Result delete(int etkinlikKatilimciId);
+	DataResult<EtkinlikVeKatilimci> getByKatilimci_KatilimciId(int katilimciId);
+	DataResult<EtkinlikVeKatilimci> getByEtkinlik_EtkinlikId(int etkinlikId);
 }

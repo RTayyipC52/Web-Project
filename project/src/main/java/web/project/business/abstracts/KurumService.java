@@ -5,6 +5,6 @@ import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 
 public interface KurumService extends BaseEntityService<Kurum>{
-	DataResult<Kurum> getById(int kurum_id);
-	Result delete(int kurum_id);
+	DataResult<Kurum> getById(int kurumId);
+	Result delete(int kurumId);
 }

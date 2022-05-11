@@ -5,6 +5,6 @@ import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 
 public interface KonusmaciService extends BaseEntityService<Konusmaci>{
-	DataResult<Konusmaci> getById(int konusmaci_id);
-	Result delete(int konusmaci_id);
+	DataResult<Konusmaci> getById(int konusmaciId);
+	Result delete(int konusmaciId);
 }

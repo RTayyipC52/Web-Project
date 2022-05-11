@@ -22,7 +22,7 @@ public class EtkinlikImage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "etkinlik_image_id")
-	private int etkinlik_image_id;
+	private int etkinlikImageId;
 	
 	@Column(name = "afis_resmi")
 	private String afis_resmi;

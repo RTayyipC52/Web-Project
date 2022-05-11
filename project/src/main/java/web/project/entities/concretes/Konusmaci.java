@@ -21,13 +21,13 @@ public class Konusmaci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "konusmaci_id")
-	private int konusmaci_id;
+	private int konusmaciId;
 	
 	@Column(name = "konusmaci_ad")
-	private String konusmaci_ad;
+	private String konusmaciAd;
 	
 	@Column(name = "konusmaci_soyad")
-	private String konusmaci_soyad;
+	private String konusmaciSoyad;
 	
 	@JsonIgnore
     @OneToMany(mappedBy = "konusmaci")
