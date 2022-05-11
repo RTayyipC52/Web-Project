@@ -39,17 +39,17 @@ public class EtkinlikVeKonusmaciManager implements EtkinlikVeKonusmaciService {
         return new SuccessResult("Kayıt Güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikVeKonusmaciDao.deleteById(id);
+    public Result delete(int etkinlik_konusmaci_id){
+        this.etkinlikVeKonusmaciDao.deleteById(etkinlik_konusmaci_id);
         return new SuccessResult("Kayıt Silindi");
     }
     
     @Override
-    public DataResult<EtkinlikVeKonusmaci> getById(int id) {
-        if (this.etkinlikVeKonusmaciDao.findById(id).isEmpty()){
+    public DataResult<EtkinlikVeKonusmaci> getById(int etkinlik_konusmaci_id) {
+        if (this.etkinlikVeKonusmaciDao.findById(etkinlik_konusmaci_id).isEmpty()){
             return new ErrorDataResult<EtkinlikVeKonusmaci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<EtkinlikVeKonusmaci>(this.etkinlikVeKonusmaciDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<EtkinlikVeKonusmaci>(this.etkinlikVeKonusmaciDao.getById(etkinlik_konusmaci_id), "Id'ye göre data listelendi");
         }
     }
 }

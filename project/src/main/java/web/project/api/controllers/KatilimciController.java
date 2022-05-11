@@ -30,8 +30,8 @@ public class KatilimciController{
     }
 
     @GetMapping("/getById")
-    public DataResult<Katilimci> getById(@RequestParam int id) {
-        return this.katilimciService.getById(id);
+    public DataResult<Katilimci> getById(@RequestParam int katilimci_id) {
+        return this.katilimciService.getById(katilimci_id);
     }
 
     @PostMapping("/add")
@@ -45,7 +45,7 @@ public class KatilimciController{
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id) {
-        return this.katilimciService.delete(id);
+    public Result delete(@RequestParam int katilimci_id) {
+        return this.katilimciService.delete(katilimci_id);
     }
 }

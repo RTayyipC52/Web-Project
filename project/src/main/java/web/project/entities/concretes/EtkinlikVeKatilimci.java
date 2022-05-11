@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 public class EtkinlikVeKatilimci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "etkinlik_katilimci_id")
+	private int etkinlik_katilimci_id;
 		
 	@ManyToOne()
     @JoinColumn(name = "etkinlik_id")

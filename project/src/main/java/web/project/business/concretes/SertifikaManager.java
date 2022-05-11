@@ -42,17 +42,17 @@ public class SertifikaManager implements SertifikaService {
         return new SuccessResult("Sertifika güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.sertifikaDao.deleteById(id);
+    public Result delete(int sertifika_id){
+        this.sertifikaDao.deleteById(sertifika_id);
         return new SuccessResult("Sertifika silindi");
     }
     
     @Override
-    public DataResult<Sertifika> getById(int id) {
-        if (this.sertifikaDao.findById(id).isEmpty()){
+    public DataResult<Sertifika> getById(int sertifika_id) {
+        if (this.sertifikaDao.findById(sertifika_id).isEmpty()){
             return new ErrorDataResult<Sertifika>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<Sertifika>(this.sertifikaDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Sertifika>(this.sertifikaDao.getById(sertifika_id), "Id'ye göre data listelendi");
         }
     }
 }

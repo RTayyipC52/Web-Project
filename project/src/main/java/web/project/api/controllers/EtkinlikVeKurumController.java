@@ -29,8 +29,8 @@ public class EtkinlikVeKurumController {
     }
 
     @GetMapping("/getById")
-    public DataResult<EtkinlikVeKurum> getById(@RequestParam int id) {
-        return this.etkinlikVeKurumService.getById(id);
+    public DataResult<EtkinlikVeKurum> getById(@RequestParam int etkinlik_kurum_id) {
+        return this.etkinlikVeKurumService.getById(etkinlik_kurum_id);
     }
 
     @PostMapping("/add")
@@ -44,7 +44,7 @@ public class EtkinlikVeKurumController {
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id) {
-        return this.etkinlikVeKurumService.delete(id);
+    public Result delete(@RequestParam int etkinlik_kurum_id) {
+        return this.etkinlikVeKurumService.delete(etkinlik_kurum_id);
     }
 }

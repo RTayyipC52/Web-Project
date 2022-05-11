@@ -39,17 +39,17 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
         return new SuccessResult("Kayıt Güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikVeKatilimciDao.deleteById(id);
+    public Result delete(int etkinlik_katilimci_id){
+        this.etkinlikVeKatilimciDao.deleteById(etkinlik_katilimci_id);
         return new SuccessResult("Kayıt Silindi");
     }
     
     @Override
-    public DataResult<EtkinlikVeKatilimci> getById(int id) {
-        if (this.etkinlikVeKatilimciDao.findById(id).isEmpty()){
+    public DataResult<EtkinlikVeKatilimci> getById(int etkinlik_katilimci_id) {
+        if (this.etkinlikVeKatilimciDao.findById(etkinlik_katilimci_id).isEmpty()){
             return new ErrorDataResult<EtkinlikVeKatilimci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<EtkinlikVeKatilimci>(this.etkinlikVeKatilimciDao.getById(etkinlik_katilimci_id), "Id'ye göre data listelendi");
         }
     }
 }

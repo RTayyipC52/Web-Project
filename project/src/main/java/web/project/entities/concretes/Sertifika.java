@@ -18,11 +18,11 @@ import lombok.NoArgsConstructor;
 public class Sertifika {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "sertifika_id")
+	private int sertifika_id;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "sertifika_ad")
+	private String sertifika_ad;
 	
 	@Column(name = "sertifika_metni")
 	private String sertifika_metni;

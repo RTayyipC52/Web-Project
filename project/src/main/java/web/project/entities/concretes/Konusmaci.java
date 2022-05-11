@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 public class Konusmaci {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "konusmaci_id")
+	private int konusmaci_id;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "konusmaci_ad")
+	private String konusmaci_ad;
 	
-	@Column(name = "soyad")
-	private String soyad;
+	@Column(name = "konusmaci_soyad")
+	private String konusmaci_soyad;
 	
 	@JsonIgnore
     @OneToMany(mappedBy = "konusmaci")

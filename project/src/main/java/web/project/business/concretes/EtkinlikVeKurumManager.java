@@ -42,17 +42,17 @@ public class EtkinlikVeKurumManager implements EtkinlikVeKurumService {
         return new SuccessResult("Kayıt güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikVeKurumDao.deleteById(id);
+    public Result delete(int etkinlik_kurum_id){
+        this.etkinlikVeKurumDao.deleteById(etkinlik_kurum_id);
         return new SuccessResult("Kayıt silindi");
     }
     
     @Override
-    public DataResult<EtkinlikVeKurum> getById(int id) {
-        if (this.etkinlikVeKurumDao.findById(id).isEmpty()){
+    public DataResult<EtkinlikVeKurum> getById(int etkinlik_kurum_id) {
+        if (this.etkinlikVeKurumDao.findById(etkinlik_kurum_id).isEmpty()){
             return new ErrorDataResult<EtkinlikVeKurum>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<EtkinlikVeKurum>(this.etkinlikVeKurumDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<EtkinlikVeKurum>(this.etkinlikVeKurumDao.getById(etkinlik_kurum_id), "Id'ye göre data listelendi");
         }
     }
 }

@@ -20,14 +20,14 @@ import lombok.NoArgsConstructor;
 public class Kurum {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "kurum_id")
+	private int kurum_id;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "kurum_ad")
+	private String kurum_ad;
 	
-	@Column(name = "aciklama")
-	private String aciklama;
+	@Column(name = "kurum_aciklama")
+	private String kurum_aciklama;
 	
 	@Column(name = "adres")
 	private String adres;

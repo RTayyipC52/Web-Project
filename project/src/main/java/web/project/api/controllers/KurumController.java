@@ -29,8 +29,8 @@ public class KurumController {
     }
 
     @GetMapping("/getById")
-    public DataResult<Kurum> getById(@RequestParam int id) {
-        return this.kurumService.getById(id);
+    public DataResult<Kurum> getById(@RequestParam int kurum_id) {
+        return this.kurumService.getById(kurum_id);
     }
 
     @PostMapping("/add")
@@ -42,7 +42,7 @@ public class KurumController {
         return this.kurumService.update((kurum));
     }
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id){
-        return this.kurumService.delete(id);
+    public Result delete(@RequestParam int kurum_id){
+        return this.kurumService.delete(kurum_id);
     }
 }

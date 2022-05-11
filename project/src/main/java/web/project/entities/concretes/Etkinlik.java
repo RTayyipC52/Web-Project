@@ -21,14 +21,14 @@ import lombok.NoArgsConstructor;
 public class Etkinlik {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "etkinlik_id")
+	private int etkinlik_id;
 	
-	@Column(name = "ad")
-	private String ad;
+	@Column(name = "etkinlik_ad")
+	private String etkinlik_ad;
 	
-	@Column(name = "aciklama")
-	private String aciklama;
+	@Column(name = "etkinlik_aciklama")
+	private String etkinlik_aciklama;
 	
 	@Column(name = "tarih")
 	private Date tarih;

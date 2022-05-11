@@ -35,17 +35,17 @@ public class EtkinlikImageController {
     }
 
     @GetMapping("/getById")
-    public DataResult<EtkinlikImage> getById(@RequestParam int id) {
-        return this.etkinlikImageService.getById(id);
+    public DataResult<EtkinlikImage> getById(@RequestParam int etkinlik_image_id) {
+        return this.etkinlikImageService.getById(etkinlik_image_id);
     }
     
     @PostMapping("/upload")
-    public Result upload(@RequestParam int id, @RequestPart("file") MultipartFile file) {
-        return this.etkinlikImageService.upload(id, file);
+    public Result upload(@RequestParam int etkinlik_id, @RequestPart("file") MultipartFile file) {
+        return this.etkinlikImageService.upload(etkinlik_id, file);
     }
 
     @DeleteMapping("/delete")
-    public Result delete(@RequestParam int id) {
-        return etkinlikImageService.delete(id);
+    public Result delete(@RequestParam int etkinlik_image_id) {
+        return etkinlikImageService.delete(etkinlik_image_id);
     }
 }

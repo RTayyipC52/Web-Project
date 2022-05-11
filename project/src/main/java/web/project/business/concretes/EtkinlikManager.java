@@ -40,17 +40,17 @@ public class EtkinlikManager implements EtkinlikService {
         return new SuccessResult("Etkinlik güncellendi");
     }
     @Override
-    public Result delete(int id){
-        this.etkinlikDao.deleteById(id);
+    public Result delete(int etkinlik_id){
+        this.etkinlikDao.deleteById(etkinlik_id);
         return new SuccessResult("Etkinlik silindi");
     }
     
     @Override
-    public DataResult<Etkinlik> getById(int id) {
-        if (this.etkinlikDao.findById(id).isEmpty()){
+    public DataResult<Etkinlik> getById(int etkinlik_id) {
+        if (this.etkinlikDao.findById(etkinlik_id).isEmpty()){
             return new ErrorDataResult<Etkinlik>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getById(id), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getById(etkinlik_id), "Id'ye göre data listelendi");
         }
     }
 }
