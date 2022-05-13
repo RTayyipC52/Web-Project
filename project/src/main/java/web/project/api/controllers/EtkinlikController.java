@@ -33,7 +33,7 @@ public class EtkinlikController {
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody Etkinlik etkinlik )  {
+    public Result add(@RequestBody Etkinlik etkinlik)  {
         return this.etkinlikService.add(etkinlik);
     }
     @PostMapping("/update")
@@ -43,5 +43,10 @@ public class EtkinlikController {
     @DeleteMapping("/delete")
     public Result delete(@RequestParam int etkinlikId){
         return this.etkinlikService.delete(etkinlikId);
+    }
+    
+    @GetMapping("/getBySertifika_SertifikaId")
+    public DataResult<Etkinlik> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
+        return this.etkinlikService.getBySertifika_SertifikaId(sertifikaId);
     }
 }
