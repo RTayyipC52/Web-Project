@@ -46,7 +46,7 @@ public class EtkinlikController {
     }
     
     @GetMapping("/getBySertifika_SertifikaId")
-    public DataResult<Etkinlik> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
+    public DataResult<List<Etkinlik>> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
         return this.etkinlikService.getBySertifika_SertifikaId(sertifikaId);
     }
 }

@@ -30,11 +30,11 @@ public class EtkinlikManager implements EtkinlikService {
 
 	@Override
 	public Result add(Etkinlik etkinlik) {
-		if(this.etkinlikDao.findById(etkinlik.getSertifika().getSertifikaId()).isPresent()) {
-			return new ErrorDataResult<Etkinlik>("Bu SertifikaId'ye ait bir kayıt vardır. Başka sertifika seçiniz");
-		}else {
-            this.etkinlikDao.save(etkinlik);
+		if (this.etkinlikDao.getBySertifika_SertifikaId(etkinlik.getSertifika().getSertifikaId()).isEmpty()) {
+			this.etkinlikDao.save(etkinlik);
 			return new SuccessResult("Etkinlik eklendi");
+		} else {
+			return new ErrorDataResult<Etkinlik>("Bu SertifikaId'ye ait bir kayıt vardır. Başka sertifika seçiniz");
 		}
 	}
 
@@ -60,11 +60,11 @@ public class EtkinlikManager implements EtkinlikService {
 	}
 
 	@Override
-	public DataResult<Etkinlik> getBySertifika_SertifikaId(int sertifikaId) {
-		if (this.etkinlikDao.findById(sertifikaId).isEmpty()) {
-			return new ErrorDataResult<Etkinlik>("Bu Id'ye ait bir kayıt yoktur");
+	public DataResult<List<Etkinlik>> getBySertifika_SertifikaId(int sertifikaId) {
+		if (this.etkinlikDao.getBySertifika_SertifikaId(sertifikaId).isEmpty()) {
+			return new ErrorDataResult<List<Etkinlik>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<Etkinlik>(this.etkinlikDao.getBySertifika_SertifikaId(sertifikaId),
+			return new SuccessDataResult<List<Etkinlik>>(this.etkinlikDao.getBySertifika_SertifikaId(sertifikaId),
 					"sertifikaIdye göre data listelendi");
 		}
 	}

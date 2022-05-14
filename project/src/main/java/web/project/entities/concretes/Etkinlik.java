@@ -41,7 +41,7 @@ public class Etkinlik {
     private Sertifika sertifika;
 	
 	@JsonIgnore
-    @OneToMany(mappedBy = "etkinlik")
+	@OneToMany(mappedBy = "etkinlik")
 	private List<EtkinlikVeKatilimci> etkinlikvekatilimci;
 	
 	@JsonIgnore

@@ -1,5 +1,6 @@
 package web.project.entities.concretes;
 
+
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;

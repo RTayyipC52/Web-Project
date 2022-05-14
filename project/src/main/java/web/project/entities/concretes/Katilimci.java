@@ -48,6 +48,6 @@ public class Katilimci {
 	private String ogrenimdurumu;
 	
 	@JsonIgnore
-    @OneToMany(mappedBy = "katilimci")
+	@OneToMany(mappedBy = "katilimci")
 	private List<EtkinlikVeKatilimci> etkinlikvekatilimci;
 }
