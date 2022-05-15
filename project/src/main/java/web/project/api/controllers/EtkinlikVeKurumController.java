@@ -49,12 +49,12 @@ public class EtkinlikVeKurumController {
 	}
 
 	@GetMapping("/getByKurumId")
-	public DataResult<EtkinlikVeKurum> getByKurum_KurumId(@RequestParam int kurumId) {
+	public DataResult<List<EtkinlikVeKurum>> getByKurum_KurumId(@RequestParam int kurumId) {
 		return this.etkinlikVeKurumService.getByKurum_KurumId(kurumId);
 	}
 
 	@GetMapping("/getByEtkinlikId")
-	public DataResult<EtkinlikVeKurum> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+	public DataResult<List<EtkinlikVeKurum>> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
 		return this.etkinlikVeKurumService.getByEtkinlik_EtkinlikId(etkinlikId);
 	}
 

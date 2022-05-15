@@ -59,22 +59,22 @@ public class EtkinlikVeKonusmaciManager implements EtkinlikVeKonusmaciService {
 	}
 
 	@Override
-	public DataResult<EtkinlikVeKonusmaci> getByKonusmaci_KonusmaciId(int konusmaciId) {
+	public DataResult<List<EtkinlikVeKonusmaci>> getByKonusmaci_KonusmaciId(int konusmaciId) {
 		if (this.etkinlikVeKonusmaciDao.findById(konusmaciId).isEmpty()) {
-			return new ErrorDataResult<EtkinlikVeKonusmaci>("Bu Id'ye ait bir kayıt yoktur");
+			return new ErrorDataResult<List<EtkinlikVeKonusmaci>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<EtkinlikVeKonusmaci>(
+			return new SuccessDataResult<List<EtkinlikVeKonusmaci>>(
 					this.etkinlikVeKonusmaciDao.getByKonusmaci_KonusmaciId(konusmaciId),
 					"KonusmacıId'ye göre data listelendi");
 		}
 	}
 
 	@Override
-	public DataResult<EtkinlikVeKonusmaci> getByEtkinlik_EtkinlikId(int etkinlikId) {
+	public DataResult<List<EtkinlikVeKonusmaci>> getByEtkinlik_EtkinlikId(int etkinlikId) {
 		if (this.etkinlikVeKonusmaciDao.findById(etkinlikId).isEmpty()) {
-			return new ErrorDataResult<EtkinlikVeKonusmaci>("Bu Id'ye ait bir kayıt yoktur");
+			return new ErrorDataResult<List<EtkinlikVeKonusmaci>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<EtkinlikVeKonusmaci>(
+			return new SuccessDataResult<List<EtkinlikVeKonusmaci>>(
 					this.etkinlikVeKonusmaciDao.getByEtkinlik_EtkinlikId(etkinlikId),
 					"EtkinlikId'ye göre data listelendi");
 		}

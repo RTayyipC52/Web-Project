@@ -58,21 +58,21 @@ public class EtkinlikVeKurumManager implements EtkinlikVeKurumService {
 	}
 
 	@Override
-	public DataResult<EtkinlikVeKurum> getByKurum_KurumId(int kurumId) {
+	public DataResult<List<EtkinlikVeKurum>> getByKurum_KurumId(int kurumId) {
 		if (this.etkinlikVeKurumDao.findById(kurumId).isEmpty()) {
-			return new ErrorDataResult<EtkinlikVeKurum>("Bu Id'ye ait bir kayıt yoktur");
+			return new ErrorDataResult<List<EtkinlikVeKurum>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<EtkinlikVeKurum>(this.etkinlikVeKurumDao.getByKurum_KurumId(kurumId),
+			return new SuccessDataResult<List<EtkinlikVeKurum>>(this.etkinlikVeKurumDao.getByKurum_KurumId(kurumId),
 					"KurumId'ye göre data listelendi");
 		}
 	}
 
 	@Override
-	public DataResult<EtkinlikVeKurum> getByEtkinlik_EtkinlikId(int etkinlikId) {
+	public DataResult<List<EtkinlikVeKurum>> getByEtkinlik_EtkinlikId(int etkinlikId) {
 		if (this.etkinlikVeKurumDao.findById(etkinlikId).isEmpty()) {
-			return new ErrorDataResult<EtkinlikVeKurum>("Bu Id'ye ait bir kayıt yoktur");
+			return new ErrorDataResult<List<EtkinlikVeKurum>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<EtkinlikVeKurum>(
+			return new SuccessDataResult<List<EtkinlikVeKurum>>(
 					this.etkinlikVeKurumDao.getByEtkinlik_EtkinlikId(etkinlikId),
 					"EtkinlikId'ye göre data listelendi");
 		}

@@ -49,12 +49,12 @@ public class EtkinlikVeKonusmaciController {
 	}
 
 	@GetMapping("/getByKonusmaciId")
-	public DataResult<EtkinlikVeKonusmaci> getByKonusmaci_KonusmaciId(@RequestParam int konusmaciId) {
+	public DataResult<List<EtkinlikVeKonusmaci>> getByKonusmaci_KonusmaciId(@RequestParam int konusmaciId) {
 		return this.etkinlikVeKonusmaciService.getByKonusmaci_KonusmaciId(konusmaciId);
 	}
 
 	@GetMapping("/getByEtkinlikId")
-	public DataResult<EtkinlikVeKonusmaci> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+	public DataResult<List<EtkinlikVeKonusmaci>> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
 		return this.etkinlikVeKonusmaciService.getByEtkinlik_EtkinlikId(etkinlikId);
 	}
 
