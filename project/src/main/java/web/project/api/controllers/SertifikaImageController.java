@@ -48,4 +48,9 @@ public class SertifikaImageController {
     public Result delete(@RequestParam int sertifikaImageId) {
         return sertifikaImageService.delete(sertifikaImageId);
     }
+    
+    @GetMapping("/getBySertifikaId")
+    public DataResult<SertifikaImage> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
+        return this.sertifikaImageService.getBySertifika_SertifikaId(sertifikaId);
+    }
 }

@@ -75,4 +75,9 @@ public class SertifikaImageManager implements SertifikaImageService{
 	        sertifikaImageDao.deleteById(sertifikaImageId); //Id'yi veritabanından siler
 	        return new SuccessResult("Resim silindi.");
 	    }
+
+		@Override
+		public DataResult<SertifikaImage> getBySertifika_SertifikaId(int sertifikaId) {
+	         return new SuccessDataResult<SertifikaImage>(this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId), "SertifikaId'ye göre data listelendi");
+		}
 }

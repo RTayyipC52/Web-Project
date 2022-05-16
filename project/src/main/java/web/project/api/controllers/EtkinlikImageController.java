@@ -48,4 +48,9 @@ public class EtkinlikImageController {
     public Result delete(@RequestParam int etkinlikImageId) {
         return etkinlikImageService.delete(etkinlikImageId);
     }
+    
+    @GetMapping("/getByEtkinlikId")
+    public DataResult<EtkinlikImage> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+        return this.etkinlikImageService.getByEtkinlik_EtkinlikId(etkinlikId);
+    }
 }

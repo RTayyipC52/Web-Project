@@ -75,4 +75,9 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	        etkinlikImageDao.deleteById(etkinlikImageId); //Id'yi veritabanından siler
 	        return new SuccessResult("Resim silindi.");
 	    }
+
+		@Override
+		public DataResult<EtkinlikImage> getByEtkinlik_EtkinlikId(int etkinlikId) {
+	         return new SuccessDataResult<EtkinlikImage>(this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+		}
 }

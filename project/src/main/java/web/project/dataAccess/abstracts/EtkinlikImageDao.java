@@ -6,4 +6,5 @@ import web.project.entities.concretes.EtkinlikImage;
 
 public interface EtkinlikImageDao extends JpaRepository<EtkinlikImage, Integer>{
 	EtkinlikImage getById(int etkinlikImageId);
+	EtkinlikImage getByEtkinlik_EtkinlikId(int etkinlikId);
 }

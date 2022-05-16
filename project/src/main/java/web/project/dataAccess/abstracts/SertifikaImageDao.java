@@ -6,4 +6,5 @@ import web.project.entities.concretes.SertifikaImage;
 
 public interface SertifikaImageDao extends JpaRepository<SertifikaImage, Integer>{
 	SertifikaImage getById(int sertifikaImageId);
+	SertifikaImage getBySertifika_SertifikaId(int sertifikaId);
 }
