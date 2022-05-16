@@ -6,6 +6,7 @@ import web.project.business.abstracts.UserService;
 import web.project.core.dataAccess.UserDao;
 import web.project.core.entities.User;
 import web.project.core.results.DataResult;
+import web.project.core.results.ErrorDataResult;
 import web.project.core.results.Result;
 import web.project.core.results.SuccessDataResult;
 import web.project.core.results.SuccessResult;
@@ -27,8 +28,16 @@ public class UserManager implements UserService {
 
     @Override
     public DataResult<User> findByEmail(String email) {
-
         return new SuccessDataResult<User>(this.userDao.findByEmail(email),
         "Kullanici bulundu.");
     }
+
+	@Override
+	public DataResult<User> getById(int userId) {
+		if (this.userDao.findById(userId).isEmpty()){
+            return new ErrorDataResult<User>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<User>(this.userDao.getById(userId), "Id'ye göre data listelendi");
+        }
+	}
 }
