@@ -69,9 +69,9 @@ public class SertifikaImageManager implements SertifikaImageService{
 
 	        String[] splitImageUrlArray = image.getImage().split("/"); // Url'i ayırır
 	        int indexOfExtension = splitImageUrlArray[splitImageUrlArray.length - 1].indexOf("."); //.'dan öncesini ayırır
-	        String publicIdOfImage = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
+	        String publicIdOfCert = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
 
-	        cloudinaryService.delete(publicIdOfImage); //publicId'yi cloudinary hesabından siler
+	        cloudinaryService.delete(publicIdOfCert); //publicId'yi cloudinary hesabından siler
 	        sertifikaImageDao.deleteById(sertifikaImageId); //Id'yi veritabanından siler
 	        return new SuccessResult("Resim silindi.");
 	    }

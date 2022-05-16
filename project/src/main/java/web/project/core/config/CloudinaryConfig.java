@@ -14,9 +14,9 @@ public class CloudinaryConfig {
 	@Bean
 	public Cloudinary cloudinaryAccount() { //Cloudinary hesap bilgileri
         return new Cloudinary(ObjectUtils.asMap(
-                "cloud_name", "",
-                "api_key", "",
-                "api_secret", ""
+                "cloud_name", "dp6gr7men",
+                "api_key", "499975252657713",
+                "api_secret", "H0c4Ac6puVrROFTTBcSLS3Wtpwo"
         ));
     }
 
