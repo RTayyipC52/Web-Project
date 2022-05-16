@@ -48,12 +48,16 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	
 	 @Override
 	    public Result upload(int etkinlikId, MultipartFile file) {
+		 if (this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId).isEmpty()) {
 	        Map<?, ?> uploadImage = (Map<?, ?>) cloudinaryService.upload(file).getData(); //Resimi yükleme işlemi yapar
 	        EtkinlikImage image = new EtkinlikImage();
 	        image.setEtkinlik(etkinlikService.getById(etkinlikId).getData()); //Id'yi veritabanında image'ın etkinlikId'sine setler
 	        image.setAfis_resmi(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
 
 	        return add(image); //Ekleme
+		 }else {
+			 return new ErrorDataResult<List<EtkinlikImage>>("Bu etkinliğin resmi bulunmaktadır");
+		 }
 	    }
 
 	    @Override
@@ -77,7 +81,11 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	    }
 
 		@Override
-		public DataResult<EtkinlikImage> getByEtkinlik_EtkinlikId(int etkinlikId) {
-	         return new SuccessDataResult<EtkinlikImage>(this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+		public DataResult<List<EtkinlikImage>> getByEtkinlik_EtkinlikId(int etkinlikId) {
+			if (this.etkinlikImageDao.findById(etkinlikId).isEmpty()) {
+				return new ErrorDataResult<List<EtkinlikImage>>("Bu Id'ye ait bir kayıt yoktur");
+			} else {
+	         return new SuccessDataResult<List<EtkinlikImage>>(this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+		    }
 		}
 }

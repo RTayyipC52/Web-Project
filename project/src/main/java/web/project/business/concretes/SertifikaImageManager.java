@@ -48,12 +48,16 @@ public class SertifikaImageManager implements SertifikaImageService{
 	
 	 @Override
 	    public Result upload(int sertifikaId, MultipartFile file) {
-	        Map<?, ?> uploadImage = (Map<?, ?>) cloudinaryService.upload(file).getData(); //Resimi yükleme işlemi yapar
-	        SertifikaImage image = new SertifikaImage();
-	        image.setSertifika(sertifikaService.getById(sertifikaId).getData()); //Id'yi veritabanında image'ın sertifikaId'sine setler
-	        image.setImage(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
-
-	        return add(image); //Ekleme
+		 if (this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId).isEmpty()) {
+			 Map<?, ?> uploadImage = (Map<?, ?>) cloudinaryService.upload(file).getData(); //Resimi yükleme işlemi yapar
+		        SertifikaImage image = new SertifikaImage();
+		        image.setSertifika(sertifikaService.getById(sertifikaId).getData()); //Id'yi veritabanında image'ın sertifikaId'sine setler
+		        image.setImage(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
+	
+		        return add(image); //Ekleme
+			} else {
+				return new ErrorDataResult<List<SertifikaImage>>("Bu sertifikanın resmi bulunmaktadır");
+			}
 	    }
 
 	    @Override
@@ -77,7 +81,11 @@ public class SertifikaImageManager implements SertifikaImageService{
 	    }
 
 		@Override
-		public DataResult<SertifikaImage> getBySertifika_SertifikaId(int sertifikaId) {
-	         return new SuccessDataResult<SertifikaImage>(this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId), "SertifikaId'ye göre data listelendi");
+		public DataResult<List<SertifikaImage>> getBySertifika_SertifikaId(int sertifikaId) {
+			if (this.sertifikaImageDao.findById(sertifikaId).isEmpty()) {
+				return new ErrorDataResult<List<SertifikaImage>>("Bu Id'ye ait bir kayıt yoktur");
+			} else {
+	         return new SuccessDataResult<List<SertifikaImage>>(this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId), "SertifikaId'ye göre data listelendi");
+		    }
 		}
 }

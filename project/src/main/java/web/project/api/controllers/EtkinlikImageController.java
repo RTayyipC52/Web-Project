@@ -50,7 +50,7 @@ public class EtkinlikImageController {
     }
     
     @GetMapping("/getByEtkinlikId")
-    public DataResult<EtkinlikImage> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
+    public DataResult<List<EtkinlikImage>> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
         return this.etkinlikImageService.getByEtkinlik_EtkinlikId(etkinlikId);
     }
 }

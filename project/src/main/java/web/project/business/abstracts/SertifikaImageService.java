@@ -11,7 +11,7 @@ import web.project.entities.concretes.SertifikaImage;
 public interface SertifikaImageService{
 	DataResult<List<SertifikaImage>> getAll();
 	DataResult<SertifikaImage> getById(int sertifikaImageId);
-	DataResult<SertifikaImage> getBySertifika_SertifikaId(int sertifikaId);
+	DataResult<List<SertifikaImage>> getBySertifika_SertifikaId(int sertifikaId);
 	Result upload(int sertifikaId, MultipartFile file);
     Result add(SertifikaImage sertifikaImage);
     Result delete(int sertifikaImageId);
