@@ -10,9 +10,12 @@ import web.project.business.abstracts.UserService;
 import web.project.core.entities.User;
 import web.project.core.results.DataResult;
 import web.project.core.results.ErrorDataResult;
+import web.project.entities.dtos.UserLoginDto;
+import web.project.entities.dtos.UserLoginReturnDto;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 @RestController
 @RequestMapping(value="/api/users")
@@ -26,6 +29,11 @@ public class UsersController {
         this.userService = userService;
     }
     
+    @GetMapping("/getAll")
+    public DataResult<List<User>> getAll() {
+        return this.userService.getAll();
+    }
+    
     @PostMapping(value="/add")
    public ResponseEntity<?> add(@Valid @RequestBody User user){
         return ResponseEntity.ok(this.userService.add(user));
@@ -34,6 +42,16 @@ public class UsersController {
     @GetMapping("/getById")
     public DataResult<User> getById(@RequestParam int userId) {
         return this.userService.getById(userId);
+    }
+    
+    @PostMapping("/login")
+    ResponseEntity<?> login(@RequestBody UserLoginDto userLoginDto){
+        DataResult<UserLoginReturnDto> result = this.userService.login(userLoginDto);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }else {
+            return ResponseEntity.badRequest().body(result);
+        }
     }
 
 

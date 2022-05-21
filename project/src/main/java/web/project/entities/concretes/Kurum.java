@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import web.project.core.entities.User;
 
 @Data
 @Entity
@@ -44,4 +45,8 @@ public class Kurum {
 	@JsonIgnore
     @OneToMany(mappedBy = "kurum")
 	private List<EtkinlikVeKurum> etkinlikvekurum;
+	
+	@OneToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
 }

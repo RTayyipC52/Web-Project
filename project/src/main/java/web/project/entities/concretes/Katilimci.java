@@ -52,7 +52,11 @@ public class Katilimci {
 	@OneToMany(mappedBy = "katilimci")
 	private List<EtkinlikVeKatilimci> etkinlikvekatilimci;
 	
-	@JsonIgnore
+	/*@JsonIgnore
     @OneToOne(mappedBy = "katilimci")
+    private User user;*/
+	
+	@OneToOne()
+    @JoinColumn(name = "user_id")
     private User user;
 }

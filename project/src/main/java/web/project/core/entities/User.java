@@ -4,17 +4,21 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import web.project.entities.concretes.Katilimci;
+import web.project.entities.concretes.Kurum;
 
 @Entity
 @Data
 @Table(name="users")
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class User {
 
     @Id
@@ -32,8 +36,16 @@ public class User {
     @NotBlank
     @NotNull
     private String password;
-
-    @OneToOne()
-    @JoinColumn(name = "katilimci_id")
+    
+    @JsonIgnore
+    @OneToOne(mappedBy = "user")
     private Katilimci katilimci;
+    
+    @JsonIgnore
+    @OneToOne(mappedBy = "user")
+    private Kurum kurum;
+
+    /*@OneToOne()
+    @JoinColumn(name = "katilimci_id")
+    private Katilimci katilimci;*/
 }
