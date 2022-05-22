@@ -56,4 +56,9 @@ public class EtkinlikVeKatilimciController {
     public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
         return this.etkinlikVeKatilimciService.getByEtkinlik_EtkinlikId(etkinlikId);
     }
+    
+    @GetMapping("/getByKatilimci_User_UserId")
+    public DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_User_UserId(@RequestParam int userId) {
+        return this.etkinlikVeKatilimciService.getByKatilimci_User_UserId(userId);
+    }
 }

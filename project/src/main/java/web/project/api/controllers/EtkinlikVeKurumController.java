@@ -57,5 +57,10 @@ public class EtkinlikVeKurumController {
 	public DataResult<List<EtkinlikVeKurum>> getByEtkinlik_EtkinlikId(@RequestParam int etkinlikId) {
 		return this.etkinlikVeKurumService.getByEtkinlik_EtkinlikId(etkinlikId);
 	}
+	
+	@GetMapping("/getByKurum_User_UserId")
+	public DataResult<List<EtkinlikVeKurum>> getByKurum_User_UserId(@RequestParam int userId) {
+		return this.etkinlikVeKurumService.getByKurum_User_UserId(userId);
+	}
 
 }

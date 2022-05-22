@@ -70,4 +70,13 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
             return new SuccessDataResult<List<EtkinlikVeKatilimci>>(this.etkinlikVeKatilimciDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
         }
 	}
+
+	@Override
+	public DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_User_UserId(int userId) {
+		if (this.etkinlikVeKatilimciDao.getByKatilimci_User_UserId(userId).isEmpty()){
+            return new ErrorDataResult<List<EtkinlikVeKatilimci>>("Bu Id'ye ait bir kayıt yoktur");
+        }else {
+            return new SuccessDataResult<List<EtkinlikVeKatilimci>>(this.etkinlikVeKatilimciDao.getByKatilimci_User_UserId(userId), "UserId'ye göre data listelendi");
+        }
+	}
 }

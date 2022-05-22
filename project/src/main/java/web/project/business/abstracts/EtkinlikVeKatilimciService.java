@@ -12,4 +12,5 @@ public interface EtkinlikVeKatilimciService extends BaseEntityService<EtkinlikVe
 	Result delete(int etkinlikKatilimciId);
 	DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_KatilimciId(int katilimciId);
 	DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_EtkinlikId(int etkinlikId);
+	DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_User_UserId(int userId);
 }

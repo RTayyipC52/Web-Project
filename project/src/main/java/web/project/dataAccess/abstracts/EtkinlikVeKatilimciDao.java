@@ -9,4 +9,5 @@ import web.project.entities.concretes.EtkinlikVeKatilimci;
 public interface EtkinlikVeKatilimciDao extends JpaRepository<EtkinlikVeKatilimci, Integer> {
    List<EtkinlikVeKatilimci> getByEtkinlik_EtkinlikId(int etkinlikId);
    List<EtkinlikVeKatilimci> getByKatilimci_KatilimciId(int katilimciId);
+   List<EtkinlikVeKatilimci> getByKatilimci_User_UserId(int userId);
 }

@@ -78,4 +78,14 @@ public class EtkinlikVeKurumManager implements EtkinlikVeKurumService {
 		}
 	}
 
+	@Override
+	public DataResult<List<EtkinlikVeKurum>> getByKurum_User_UserId(int userId) {
+		if (this.etkinlikVeKurumDao.getByKurum_User_UserId(userId).isEmpty()) {
+			return new ErrorDataResult<List<EtkinlikVeKurum>>("Bu Id'ye ait bir kayıt yoktur");
+		} else {
+			return new SuccessDataResult<List<EtkinlikVeKurum>>(this.etkinlikVeKurumDao.getByKurum_User_UserId(userId),
+					"UserId'ye göre data listelendi");
+		}
+	}
+
 }
