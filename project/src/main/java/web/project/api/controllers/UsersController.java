@@ -13,7 +13,7 @@ import web.project.core.results.ErrorDataResult;
 import web.project.entities.dtos.UserLoginDto;
 import web.project.entities.dtos.UserLoginReturnDto;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,10 +34,10 @@ public class UsersController {
         return this.userService.getAll();
     }
     
-    @PostMapping(value="/add")
+   /* @PostMapping(value="/add")
    public ResponseEntity<?> add(@Valid @RequestBody User user){
         return ResponseEntity.ok(this.userService.add(user));
-   }
+   }*/
     
     @GetMapping("/getById")
     public DataResult<User> getById(@RequestParam int userId) {

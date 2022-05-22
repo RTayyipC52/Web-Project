@@ -44,8 +44,4 @@ public class User {
     @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Kurum kurum;
-
-    /*@OneToOne()
-    @JoinColumn(name = "katilimci_id")
-    private Katilimci katilimci;*/
 }

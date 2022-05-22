@@ -2,12 +2,13 @@ package web.project.api.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web.project.business.abstracts.KatilimciService;
 import web.project.core.results.DataResult;
 import web.project.core.results.Result;
-
 import web.project.entities.concretes.Katilimci;
+import web.project.entities.dtos.KatilimciRegisterDto;
 
 import java.util.List;
 
@@ -34,11 +35,6 @@ public class KatilimciController{
         return this.katilimciService.getById(katilimciId);
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody Katilimci katilimci) {
-        return this.katilimciService.add(katilimci);
-    }
-
     @PutMapping("/update")
     public Result update(@RequestBody Katilimci katilimci) {
         return this.katilimciService.update((katilimci));
@@ -47,5 +43,19 @@ public class KatilimciController{
     @DeleteMapping("/delete")
     public Result delete(@RequestParam int katilimciId) {
         return this.katilimciService.delete(katilimciId);
+    }
+    
+    @GetMapping("/getByUser_UserId")
+    public DataResult<List<Katilimci>> getByUser_UserId(@RequestParam int userId) {
+        return this.katilimciService.getByUser_UserId(userId);
+    }
+    
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody KatilimciRegisterDto katilimciRegisterDto){
+        Result result=this.katilimciService.add(katilimciRegisterDto);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }

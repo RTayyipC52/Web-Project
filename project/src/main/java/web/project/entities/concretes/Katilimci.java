@@ -33,9 +33,6 @@ public class Katilimci {
 	@Column(name = "telefon")
 	private String telefon;
 	
-	@Column(name = "eposta")
-	private String eposta;
-	
 	@Column(name = "universite")
 	private String universite;
 	
@@ -51,10 +48,6 @@ public class Katilimci {
 	@JsonIgnore
 	@OneToMany(mappedBy = "katilimci")
 	private List<EtkinlikVeKatilimci> etkinlikvekatilimci;
-	
-	/*@JsonIgnore
-    @OneToOne(mappedBy = "katilimci")
-    private User user;*/
 	
 	@OneToOne()
     @JoinColumn(name = "user_id")

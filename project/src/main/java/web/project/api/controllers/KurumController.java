@@ -7,6 +7,9 @@ import web.project.business.abstracts.KurumService;
 import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 import web.project.entities.concretes.Kurum;
+import web.project.entities.dtos.KurumRegisterDto;
+
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -33,16 +36,27 @@ public class KurumController {
         return this.kurumService.getById(kurumId);
     }
 
-    @PostMapping("/add")
-    public Result add(@RequestBody Kurum kurum )  {
-        return this.kurumService.add(kurum);
-    }
     @PutMapping("/update")
     public Result update(@RequestBody Kurum kurum){
         return this.kurumService.update((kurum));
     }
+    
     @DeleteMapping("/delete")
     public Result delete(@RequestParam int kurumId){
         return this.kurumService.delete(kurumId);
+    }
+    
+    @GetMapping("/getByUser_UserId")
+    public DataResult<List<Kurum>> getByUser_UserId(@RequestParam int userId) {
+        return this.kurumService.getByUser_UserId(userId);
+    }
+    
+    @PostMapping("/add")
+    public ResponseEntity<?> add(@RequestBody KurumRegisterDto kurumRegisterDto){
+        Result result=this.kurumService.add(kurumRegisterDto);
+        if(result.isSuccess()){
+            return ResponseEntity.ok(result);
+        }
+        return ResponseEntity.badRequest().body(result);
     }
 }
