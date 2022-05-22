@@ -60,7 +60,7 @@ public class EtkinlikVeKonusmaciManager implements EtkinlikVeKonusmaciService {
 
 	@Override
 	public DataResult<List<EtkinlikVeKonusmaci>> getByKonusmaci_KonusmaciId(int konusmaciId) {
-		if (this.etkinlikVeKonusmaciDao.findById(konusmaciId).isEmpty()) {
+		if (this.etkinlikVeKonusmaciDao.getByKonusmaci_KonusmaciId(konusmaciId).isEmpty()) {
 			return new ErrorDataResult<List<EtkinlikVeKonusmaci>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
 			return new SuccessDataResult<List<EtkinlikVeKonusmaci>>(
@@ -71,7 +71,7 @@ public class EtkinlikVeKonusmaciManager implements EtkinlikVeKonusmaciService {
 
 	@Override
 	public DataResult<List<EtkinlikVeKonusmaci>> getByEtkinlik_EtkinlikId(int etkinlikId) {
-		if (this.etkinlikVeKonusmaciDao.findById(etkinlikId).isEmpty()) {
+		if (this.etkinlikVeKonusmaciDao.getByEtkinlik_EtkinlikId(etkinlikId).isEmpty()) {
 			return new ErrorDataResult<List<EtkinlikVeKonusmaci>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
 			return new SuccessDataResult<List<EtkinlikVeKonusmaci>>(

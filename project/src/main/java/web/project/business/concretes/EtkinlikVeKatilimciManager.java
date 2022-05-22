@@ -55,7 +55,7 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
 
 	@Override
 	public DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_KatilimciId(int katilimciId) {
-		if (this.etkinlikVeKatilimciDao.findById(katilimciId).isEmpty()){
+		if (this.etkinlikVeKatilimciDao.getByKatilimci_KatilimciId(katilimciId).isEmpty()){
             return new ErrorDataResult<List<EtkinlikVeKatilimci>>("Bu Id'ye ait bir kayıt yoktur");
         }else {
             return new SuccessDataResult<List<EtkinlikVeKatilimci>>(this.etkinlikVeKatilimciDao.getByKatilimci_KatilimciId(katilimciId), "KatılımcıId'ye göre data listelendi");
@@ -64,7 +64,7 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
 
 	@Override
 	public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_EtkinlikId(int etkinlikId) {
-		if (this.etkinlikVeKatilimciDao.findById(etkinlikId).isEmpty()){
+		if (this.etkinlikVeKatilimciDao.getByEtkinlik_EtkinlikId(etkinlikId).isEmpty()){
             return new ErrorDataResult<List<EtkinlikVeKatilimci>>("Bu Id'ye ait bir kayıt yoktur");
         }else {
             return new SuccessDataResult<List<EtkinlikVeKatilimci>>(this.etkinlikVeKatilimciDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");

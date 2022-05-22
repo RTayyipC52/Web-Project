@@ -82,7 +82,7 @@ public class SertifikaImageManager implements SertifikaImageService{
 
 		@Override
 		public DataResult<List<SertifikaImage>> getBySertifika_SertifikaId(int sertifikaId) {
-			if (this.sertifikaImageDao.findById(sertifikaId).isEmpty()) {
+			if (this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId).isEmpty()) {
 				return new ErrorDataResult<List<SertifikaImage>>("Bu Id'ye ait bir kayıt yoktur");
 			} else {
 	         return new SuccessDataResult<List<SertifikaImage>>(this.sertifikaImageDao.getBySertifika_SertifikaId(sertifikaId), "SertifikaId'ye göre data listelendi");
