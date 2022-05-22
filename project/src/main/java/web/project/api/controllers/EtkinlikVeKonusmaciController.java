@@ -38,7 +38,7 @@ public class EtkinlikVeKonusmaciController {
 		return this.etkinlikVeKonusmaciService.add(etkinlikVeKonusmaci);
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public Result update(@RequestBody EtkinlikVeKonusmaci etkinlikVeKonusmaci) {
 		return this.etkinlikVeKonusmaciService.update((etkinlikVeKonusmaci));
 	}

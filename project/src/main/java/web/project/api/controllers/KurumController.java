@@ -37,7 +37,7 @@ public class KurumController {
     public Result add(@RequestBody Kurum kurum )  {
         return this.kurumService.add(kurum);
     }
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Kurum kurum){
         return this.kurumService.update((kurum));
     }

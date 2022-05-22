@@ -37,7 +37,7 @@ public class SertifikaController {
     public Result add(@RequestBody Sertifika sertifika )  {
         return this.sertifikaService.add(sertifika);
     }
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Sertifika sertifika){
         return this.sertifikaService.update((sertifika));
     }

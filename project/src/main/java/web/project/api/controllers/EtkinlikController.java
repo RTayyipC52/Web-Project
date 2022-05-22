@@ -36,7 +36,7 @@ public class EtkinlikController {
     public Result add(@RequestBody Etkinlik etkinlik)  {
         return this.etkinlikService.add(etkinlik);
     }
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Etkinlik etkinlik){
         return this.etkinlikService.update((etkinlik));
     }

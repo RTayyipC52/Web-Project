@@ -37,7 +37,7 @@ public class EtkinlikVeKatilimciController {
         return this.etkinlikVeKatilimciService.add(etkinlikVeKatilimci);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody EtkinlikVeKatilimci etkinlikVeKatilimci) {
         return this.etkinlikVeKatilimciService.update((etkinlikVeKatilimci));
     }

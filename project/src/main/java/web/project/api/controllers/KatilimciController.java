@@ -39,7 +39,7 @@ public class KatilimciController{
         return this.katilimciService.add(katilimci);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Katilimci katilimci) {
         return this.katilimciService.update((katilimci));
     }

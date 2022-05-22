@@ -38,7 +38,7 @@ public class KonusmaciController {
         return this.konusmaciService.add(konusmaci);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result update(@RequestBody Konusmaci konusmaci) {
         return this.konusmaciService.update((konusmaci));
     }
