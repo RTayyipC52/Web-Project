@@ -47,7 +47,7 @@ public class KurumController {
     }
     
     @GetMapping("/getByUser_UserId")
-    public DataResult<List<Kurum>> getByUser_UserId(@RequestParam int userId) {
+    public DataResult<Kurum> getByUser_UserId(@RequestParam int userId) {
         return this.kurumService.getByUser_UserId(userId);
     }
     

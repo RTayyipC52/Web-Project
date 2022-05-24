@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 @RestController
 @RequestMapping(value="/api/users")
-
+@CrossOrigin
 public class UsersController {
 
     private UserService userService;

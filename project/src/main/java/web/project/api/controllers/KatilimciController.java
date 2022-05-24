@@ -46,7 +46,7 @@ public class KatilimciController{
     }
     
     @GetMapping("/getByUser_UserId")
-    public DataResult<List<Katilimci>> getByUser_UserId(@RequestParam int userId) {
+    public DataResult<Katilimci> getByUser_UserId(@RequestParam int userId) {
         return this.katilimciService.getByUser_UserId(userId);
     }
     

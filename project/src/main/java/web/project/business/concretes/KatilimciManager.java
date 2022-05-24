@@ -65,11 +65,11 @@ public class KatilimciManager implements KatilimciService {
     }
 
 	@Override
-	public DataResult<List<Katilimci>> getByUser_UserId(int userId) {
+	public DataResult<Katilimci> getByUser_UserId(int userId) {
 		if (this.katilimciDao.getByUser_UserId(userId).isEmpty()){
-            return new ErrorDataResult<List<Katilimci>>("Bu Id'ye ait bir kayıt yoktur");
+            return new ErrorDataResult<Katilimci>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<List<Katilimci>>(this.katilimciDao.getByUser_UserId(userId), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Katilimci>(this.katilimciDao.findByUser_UserId(userId), "Id'ye göre data listelendi");
         }
 	}
 

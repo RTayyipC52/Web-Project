@@ -67,11 +67,11 @@ public class KurumManager implements KurumService {
     }
 
 	@Override
-	public DataResult<List<Kurum>> getByUser_UserId(int userId) {
+	public DataResult<Kurum> getByUser_UserId(int userId) {
 		if (this.kurumDao.getByUser_UserId(userId).isEmpty()){
-            return new ErrorDataResult<List<Kurum>>("Bu Id'ye ait bir kayıt yoktur");
+            return new ErrorDataResult<Kurum>("Bu Id'ye ait bir kayıt yoktur");
         }else {
-            return new SuccessDataResult<List<Kurum>>(this.kurumDao.getByUser_UserId(userId), "Id'ye göre data listelendi");
+            return new SuccessDataResult<Kurum>(this.kurumDao.findByUser_UserId(userId), "Id'ye göre data listelendi");
         }
 	}
 
