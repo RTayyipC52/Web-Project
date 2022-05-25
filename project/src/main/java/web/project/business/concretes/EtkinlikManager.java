@@ -30,7 +30,7 @@ public class EtkinlikManager implements EtkinlikService {
 
 	@Override
 	public Result add(Etkinlik etkinlik) {
-		if (this.etkinlikDao.getBySertifika_SertifikaId(etkinlik.getSertifika().getSertifikaId()).isEmpty()) {
+		if (this.etkinlikDao.getBySertifikaImage_SertifikaImageId(etkinlik.getSertifikaImage().getSertifika().getSertifikaId()).isEmpty()) {
 			this.etkinlikDao.save(etkinlik);
 			return new SuccessResult("Etkinlik eklendi");
 		} else {
@@ -60,11 +60,11 @@ public class EtkinlikManager implements EtkinlikService {
 	}
 
 	@Override
-	public DataResult<List<Etkinlik>> getBySertifika_SertifikaId(int sertifikaId) {
-		if (this.etkinlikDao.getBySertifika_SertifikaId(sertifikaId).isEmpty()) {
+	public DataResult<List<Etkinlik>> getBySertifikaImage_SertifikaImageId(int sertifikaImageId) {
+		if (this.etkinlikDao.getBySertifikaImage_SertifikaImageId(sertifikaImageId).isEmpty()) {
 			return new ErrorDataResult<List<Etkinlik>>("Bu Id'ye ait bir kayıt yoktur");
 		} else {
-			return new SuccessDataResult<List<Etkinlik>>(this.etkinlikDao.getBySertifika_SertifikaId(sertifikaId),
+			return new SuccessDataResult<List<Etkinlik>>(this.etkinlikDao.getBySertifikaImage_SertifikaImageId(sertifikaImageId),
 					"sertifikaIdye göre data listelendi");
 		}
 	}

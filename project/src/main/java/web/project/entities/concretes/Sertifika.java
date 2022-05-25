@@ -27,9 +27,9 @@ public class Sertifika {
 	@Column(name = "sertifika_metni")
 	private String sertifikaMetni;
 	
-	@JsonIgnore
+	/*@JsonIgnore
     @OneToOne(mappedBy = "sertifika")
-    private Etkinlik etkinlik;
+    private Etkinlik etkinlik;*/
 	
 	@JsonIgnore
     @OneToOne(mappedBy = "sertifika")

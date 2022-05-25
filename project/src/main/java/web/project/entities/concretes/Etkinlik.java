@@ -37,8 +37,8 @@ public class Etkinlik {
 	private String yer;
 	
 	@OneToOne()
-    @JoinColumn(name = "sertifika_id")
-    private Sertifika sertifika;
+    @JoinColumn(name = "sertifika_image_id")
+    private SertifikaImage sertifikaImage;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "etkinlik")

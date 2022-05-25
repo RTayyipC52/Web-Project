@@ -50,7 +50,7 @@ public class SertifikaImageController {
     }
     
     @GetMapping("/getBySertifikaId")
-    public DataResult<List<SertifikaImage>> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
+    public DataResult<SertifikaImage> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
         return this.sertifikaImageService.getBySertifika_SertifikaId(sertifikaId);
     }
 }

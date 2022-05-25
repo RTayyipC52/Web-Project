@@ -45,8 +45,8 @@ public class EtkinlikController {
         return this.etkinlikService.delete(etkinlikId);
     }
     
-    @GetMapping("/getBySertifika_SertifikaId")
-    public DataResult<List<Etkinlik>> getBySertifika_SertifikaId(@RequestParam int sertifikaId) {
-        return this.etkinlikService.getBySertifika_SertifikaId(sertifikaId);
+    @GetMapping("/getBySertifikaImage_SertifikaImageId")
+    public DataResult<List<Etkinlik>> getBySertifikaImage_SertifikaImageId(@RequestParam int sertifikaImageId) {
+        return this.etkinlikService.getBySertifikaImage_SertifikaImageId(sertifikaImageId);
     }
 }
