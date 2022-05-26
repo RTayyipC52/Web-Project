@@ -7,6 +7,7 @@ import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 import web.project.entities.concretes.EtkinlikVeKatilimci;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -61,4 +62,9 @@ public class EtkinlikVeKatilimciController {
     public DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_User_UserId(@RequestParam int userId) {
         return this.etkinlikVeKatilimciService.getByKatilimci_User_UserId(userId);
     }
+    
+    @GetMapping("/getByEtkinlik_Tarih")
+    public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(Date tarih) {
+		return this.etkinlikVeKatilimciService.getByEtkinlik_Tarih(tarih);
+	}
 }

@@ -2,6 +2,7 @@ package web.project.business.abstracts;
 
 import web.project.entities.concretes.EtkinlikVeKatilimci;
 
+import java.util.Date;
 import java.util.List;
 
 import web.project.core.results.DataResult;
@@ -13,4 +14,5 @@ public interface EtkinlikVeKatilimciService extends BaseEntityService<EtkinlikVe
 	DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_KatilimciId(int katilimciId);
 	DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_EtkinlikId(int etkinlikId);
 	DataResult<List<EtkinlikVeKatilimci>> getByKatilimci_User_UserId(int userId);
+	DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(Date tarih);
 }
