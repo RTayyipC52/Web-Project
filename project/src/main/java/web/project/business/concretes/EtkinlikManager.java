@@ -56,6 +56,24 @@ public class EtkinlikManager implements EtkinlikService {
 
 	@Override
 	public Result update(Etkinlik etkinlik) {
+		Etkinlik e = getById(etkinlik.getEtkinlikId()).getData();
+		
+		etkinlik.setEtkinlikAd((etkinlik.getEtkinlikAd() == null || etkinlik.getEtkinlikAd() == ""
+				? e.getEtkinlikAd()
+				: etkinlik.getEtkinlikAd()));
+		etkinlik.setEtkinlikAciklama((etkinlik.getEtkinlikAciklama() == null || etkinlik.getEtkinlikAciklama() == ""
+				? e.getEtkinlikAciklama()
+				: etkinlik.getEtkinlikAciklama()));
+		etkinlik.setTarih((etkinlik.getTarih() == null
+				? e.getTarih()
+				: etkinlik.getTarih()));
+		etkinlik.setYer((etkinlik.getYer() == null || etkinlik.getYer() == ""
+				? e.getYer()
+				: etkinlik.getYer()));
+		etkinlik.setSertifikaImage((etkinlik.getSertifikaImage().getSertifikaImageId() == 0
+				? e.getSertifikaImage()
+				: etkinlik.getSertifikaImage()));
+		
 		this.etkinlikDao.save(etkinlik);
 		return new SuccessResult("Etkinlik güncellendi");
 	}
