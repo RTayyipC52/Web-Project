@@ -40,7 +40,7 @@ public class EtkinlikVeKurumController {
 
 	@PutMapping("/update")
 	public Result update(@RequestBody EtkinlikVeKurum etkinlikVeKurum) {
-		return this.etkinlikVeKurumService.update((etkinlikVeKurum));
+		return this.etkinlikVeKurumService.update(etkinlikVeKurum);
 	}
 
 	@DeleteMapping("/delete")

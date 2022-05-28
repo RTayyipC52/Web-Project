@@ -13,7 +13,7 @@ import web.project.core.results.SuccessResult;
 import web.project.dataAccess.abstracts.EtkinlikVeKatilimciDao;
 import web.project.entities.concretes.EtkinlikVeKatilimci;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
@@ -88,7 +88,7 @@ public class EtkinlikVeKatilimciManager implements EtkinlikVeKatilimciService{
 	}
 
 	@Override
-	public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(Date tarih) {
+	public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(LocalDate tarih) {
 		return new SuccessDataResult<List<EtkinlikVeKatilimci>>(this.etkinlikVeKatilimciDao.getByEtkinlik_Tarih(tarih), "Tarihe göre data listelendi");
 	}
 }

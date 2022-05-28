@@ -7,7 +7,7 @@ import web.project.core.results.DataResult;
 import web.project.core.results.Result;
 import web.project.entities.concretes.EtkinlikVeKatilimci;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -64,7 +64,7 @@ public class EtkinlikVeKatilimciController {
     }
     
     @GetMapping("/getByEtkinlik_Tarih")
-    public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(Date tarih) {
+    public DataResult<List<EtkinlikVeKatilimci>> getByEtkinlik_Tarih(@RequestParam LocalDate tarih) {
 		return this.etkinlikVeKatilimciService.getByEtkinlik_Tarih(tarih);
 	}
 }

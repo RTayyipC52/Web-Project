@@ -29,6 +29,9 @@ public class SertifikaImage {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "public_image")
+	private String publicImage;
+	
 	@OneToOne()
     @JoinColumn(name = "sertifika_id")
     private Sertifika sertifika;

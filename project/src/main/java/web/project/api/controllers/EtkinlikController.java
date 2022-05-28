@@ -39,7 +39,7 @@ public class EtkinlikController {
 	 */
     @PutMapping("/update")
     public Result update(@RequestBody Etkinlik etkinlik){
-        return this.etkinlikService.update((etkinlik));
+        return this.etkinlikService.update(etkinlik);
     }
     @DeleteMapping("/delete")
     public Result delete(@RequestParam int etkinlikId){

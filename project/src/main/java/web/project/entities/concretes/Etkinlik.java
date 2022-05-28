@@ -1,6 +1,6 @@
 package web.project.entities.concretes;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.*;
@@ -31,7 +31,7 @@ public class Etkinlik {
 	private String etkinlikAciklama;
 	
 	@Column(name = "tarih")
-	private Date tarih;
+	private LocalDate tarih;
 	
 	@Column(name = "yer")
 	private String yer;

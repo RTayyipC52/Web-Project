@@ -54,6 +54,11 @@ public class SertifikaImageManager implements SertifikaImageService{
 		        image.setSertifika(sertifikaService.getById(sertifikaId).getData()); //Id'yi veritabanında image'ın sertifikaId'sine setler
 		        image.setImage(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
 	
+		        String[] splitImageUrlArray = image.getImage().split("/"); // Url'i ayırır
+		        int indexOfExtension = splitImageUrlArray[splitImageUrlArray.length - 1].indexOf("."); //.'dan öncesini ayırır
+		        String publicIdOfCert = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
+
+		        image.setPublicImage(publicIdOfCert);
 		        return add(image); //Ekleme
 			} else {
 				return new ErrorDataResult<List<SertifikaImage>>("Bu sertifikanın resmi bulunmaktadır");
