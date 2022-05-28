@@ -27,6 +27,9 @@ public class EtkinlikImage {
 	@Column(name = "afis_resmi")
 	private String afis_resmi;
 	
+	@Column(name = "afis_image")
+	private String afisImage;
+	
 	@OneToOne()
     @JoinColumn(name = "etkinlik_id")
     private Etkinlik etkinlik;

@@ -54,6 +54,11 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	        image.setEtkinlik(etkinlikService.getById(etkinlikId).getData()); //Id'yi veritabanında image'ın etkinlikId'sine setler
 	        image.setAfis_resmi(uploadImage.get("url").toString()); //Resimin url'sini veritabanında image'ın afis resmine setler
 
+	        String[] splitImageUrlArray = image.getAfis_resmi().split("/"); // Url'i ayırır
+	        int indexOfExtension = splitImageUrlArray[splitImageUrlArray.length - 1].indexOf("."); //.'dan öncesini ayırır
+	        String publicIdOfCert = splitImageUrlArray[splitImageUrlArray.length - 1].substring(0, indexOfExtension); //Resimin publicId'sini bulur
+
+	        image.setAfisImage(publicIdOfCert);
 	        return add(image); //Ekleme
 		 }else {
 			 return new ErrorDataResult<List<EtkinlikImage>>("Bu etkinliğin resmi bulunmaktadır");
