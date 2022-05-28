@@ -86,11 +86,11 @@ public class EtkinlikImageManager implements EtkinlikImageService{
 	    }
 
 		@Override
-		public DataResult<List<EtkinlikImage>> getByEtkinlik_EtkinlikId(int etkinlikId) {
+		public DataResult<EtkinlikImage> getByEtkinlik_EtkinlikId(int etkinlikId) {
 			if (this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId).isEmpty()) {
-				return new ErrorDataResult<List<EtkinlikImage>>("Bu Id'ye ait bir kayıt yoktur");
+				return new ErrorDataResult<EtkinlikImage>("Bu Id'ye ait bir kayıt yoktur");
 			} else {
-	         return new SuccessDataResult<List<EtkinlikImage>>(this.etkinlikImageDao.getByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
+	         return new SuccessDataResult<EtkinlikImage>(this.etkinlikImageDao.findByEtkinlik_EtkinlikId(etkinlikId), "EtkinlikId'ye göre data listelendi");
 		    }
 		}
 }
