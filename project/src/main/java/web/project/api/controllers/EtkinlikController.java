@@ -33,10 +33,6 @@ public class EtkinlikController {
     public DataResult<Etkinlik> getById(@RequestParam int etkinlikId) {
         return this.etkinlikService.getById(etkinlikId);
     }
-	/*
-	 * @PostMapping("/add") public Result add(@RequestBody Etkinlik etkinlik) {
-	 * return this.etkinlikService.add(etkinlik); }
-	 */
     @PutMapping("/update")
     public Result update(@RequestBody Etkinlik etkinlik){
         return this.etkinlikService.update(etkinlik);
